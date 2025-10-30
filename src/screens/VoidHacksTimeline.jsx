@@ -3,6 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 export default function VoidHacksTimeline() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [show , setShow] = useState(true);
   const timelineRef = useRef(null);
 
   useEffect(() => {
@@ -117,6 +118,8 @@ export default function VoidHacksTimeline() {
       color: '#ec4899',
       category: 'Break'
     },
+  ];
+  const timelineEvents2 = [
     {
       day: 'Day 2',
       date: '29 Nov 2025',
@@ -207,17 +210,19 @@ export default function VoidHacksTimeline() {
       color: '#a855f7',
       category: 'End'
     }
-  ];
-
+  ]
   const styles = {
+   
     container: {
       position: 'relative',
-      width: '100%',
+      // width: '100%',
       minHeight: '100vh',
       backgroundColor: '#000',
       padding: '5rem 1.5rem',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-      overflowX: 'hidden'
+      overflowX: 'hidden',
+      overflowY: 'auto',     // ✅ allows vertical scroll but removes horizontal overflow
+  boxSizing: 'border-box' // ✅ prevents hidden overflow due to margins/padding
     },
     backgroundEffects: {
       position: 'fixed',
@@ -534,7 +539,9 @@ export default function VoidHacksTimeline() {
     }
   };
 
-  const categories = [...new Set(timelineEvents.map(e => e.category))];
+  const categories1 = [...new Set(timelineEvents.map(e => e.category)) ];
+  const categories2 = [...new Set(timelineEvents2.map(e => e.category))];
+  const categories = [...new Set([...categories1, ...categories2])];
 
   return (
     <div style={styles.container} ref={timelineRef}>
@@ -631,6 +638,77 @@ export default function VoidHacksTimeline() {
                 </div>
               </div>
             ))}
+            {show?<button onClick={()=>{setShow(!show)}}>show</button>:
+            <>
+              {timelineEvents2.map((event, index) => (
+              <div
+                key={index}
+                style={{
+                  ...styles.timelineItem,
+                  ...(isVisible ? {
+                    ...styles.timelineItemVisible,
+                    transitionDelay: `${index * 0.1}s`
+                  } : {})
+                }}
+                onMouseEnter={() => setActiveIndex(index)}
+              >
+                {index === 0 || timelineEvents[index - 1].day !== event.day ? (
+                  <div style={styles.dayLabel}>{event.day}</div>
+                ) : null}
+                
+                <div
+                  style={{
+                    ...styles.timelineNode,
+                    borderColor: event.color,
+                    ...(activeIndex === index ? {
+                      ...styles.timelineNodeActive,
+                      boxShadow: `0 0 20px ${event.color}`
+                    } : {})
+                  }}
+                >
+                  <div
+                    style={{
+                      ...styles.nodeInner,
+                      backgroundColor: activeIndex === index ? event.color : 'transparent'
+                    }}
+                  ></div>
+                </div>
+
+                <div
+                  style={{
+                    ...styles.timelineCard,
+                    borderLeftColor: event.color,
+                    borderLeftWidth: '3px',
+                    ...(activeIndex === index ? styles.timelineCardHover : {})
+                  }}
+                >
+                  <div style={styles.cardHeader}>
+                    <div style={styles.cardIcon}>{event.icon}</div>
+                    <div style={styles.cardTime}>
+                      <div style={styles.time}>{event.time}</div>
+                      <div style={styles.date}>{event.date}</div>
+                    </div>
+                    <div
+                      style={{
+                        ...styles.categoryBadge,
+                        backgroundColor: `${event.color}20`,
+                        color: event.color,
+                        border: `1px solid ${event.color}40`
+                      }}
+                    >
+                      {event.category}
+                    </div>
+                  </div>
+                  <div style={styles.cardBody}>
+                    <h3 style={styles.cardTitle}>{event.title}</h3>
+                    <p style={styles.cardDescription}>{event.description}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+            <button onClick={()=>{setShow(!show)}}>show less</button>
+            </>
+            }
           </div>
         </div>
 

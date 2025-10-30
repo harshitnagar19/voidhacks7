@@ -16,15 +16,8 @@ export default function VoidHacksBenefits() {
       { threshold: 0.1 }
     );
 
-    if (sectionRef.current) {
-      observer.observe(sectionRef.current);
-    }
-
-    return () => {
-      if (sectionRef.current) {
-        observer.unobserve(sectionRef.current);
-      }
-    };
+    if (sectionRef.current) observer.observe(sectionRef.current);
+    return () => observer.disconnect();
   }, []);
 
   const benefits = [
@@ -85,14 +78,7 @@ export default function VoidHacksBenefits() {
       gradient: 'linear-gradient(135deg, #0891b2, #06b6d4)',
       stats: '15+ Companies'
     },
-    {
-      icon: Star,
-      title: 'Networking Sessions',
-      description: 'Connect with 200+ talented hackers, sponsors, and tech enthusiasts',
-      color: '#f59e0b',
-      gradient: 'linear-gradient(135deg, #f59e0b, #fbbf24)',
-      stats: '200+ Hackers'
-    },
+    
     {
       icon: Zap,
       title: 'Exclusive API Access',
@@ -119,7 +105,8 @@ export default function VoidHacksBenefits() {
       backgroundColor: '#000',
       padding: '5rem 1.5rem',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
-      overflow: 'hidden'
+      overflowX: 'hidden',
+      boxSizing: 'border-box'
     },
     backgroundEffects: {
       position: 'fixed',
@@ -193,28 +180,28 @@ export default function VoidHacksBenefits() {
       fontSize: '4rem',
       fontWeight: '900',
       color: '#fff',
-      letterSpacing: '-0.05em',
       marginBottom: '0.5rem',
       lineHeight: 1
     },
     titleGradient: {
-      background: 'linear-gradient(to right, #22d3ee, #a855f7, #ec4899)',
-      WebkitBackgroundClip: 'text',
-      WebkitTextFillColor: 'transparent',
-      backgroundClip: 'text'
-    },
+        background: 'linear-gradient(to right, #22d3ee, #a855f7, #ec4899)',
+        WebkitBackgroundClip: 'text',
+        WebkitTextFillColor: 'transparent',
+        backgroundClip: 'text'
+      },
     subtitle: {
       color: '#9ca3af',
       fontSize: '1.25rem',
       fontWeight: '300',
-      letterSpacing: '0.1em',
       marginTop: '1rem'
     },
+    // ✅ 3 cards per row grid
     benefitsGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(320px, 1fr))',
+      gridTemplateColumns: 'repeat(3, 1fr)',
       gap: '2rem',
-      marginBottom: '3rem'
+      marginBottom: '3rem',
+      boxSizing: 'border-box'
     },
     benefitCard: {
       position: 'relative',
@@ -238,16 +225,6 @@ export default function VoidHacksBenefits() {
       border: '2px solid rgba(34, 211, 238, 0.4)',
       boxShadow: '0 0 30px rgba(6,182,212,0.3)'
     },
-    cardGlow: {
-      position: 'absolute',
-      top: '-50%',
-      left: '-50%',
-      width: '200%',
-      height: '200%',
-      opacity: 0,
-      transition: 'opacity 0.4s ease',
-      pointerEvents: 'none'
-    },
     iconWrapper: {
       width: '80px',
       height: '80px',
@@ -257,22 +234,13 @@ export default function VoidHacksBenefits() {
       justifyContent: 'center',
       marginBottom: '1.5rem',
       transition: 'all 0.4s ease',
-      position: 'relative',
-      overflow: 'hidden'
-    },
-    iconGlow: {
-      position: 'absolute',
-      inset: 0,
-      borderRadius: '20px',
-      opacity: 0.5,
-      filter: 'blur(20px)'
+      position: 'relative'
     },
     cardTitle: {
       fontSize: '1.5rem',
       fontWeight: '800',
       color: '#fff',
-      marginBottom: '0.75rem',
-      transition: 'color 0.3s ease'
+      marginBottom: '0.75rem'
     },
     cardDescription: {
       color: '#9ca3af',
@@ -285,9 +253,7 @@ export default function VoidHacksBenefits() {
       padding: '0.5rem 1rem',
       borderRadius: '9999px',
       fontSize: '0.875rem',
-      fontWeight: '700',
-      letterSpacing: '0.05em',
-      transition: 'all 0.3s ease'
+      fontWeight: '700'
     },
     ctaSection: {
       marginTop: '4rem',
@@ -320,8 +286,7 @@ export default function VoidHacksBenefits() {
       fontSize: '1.125rem',
       border: 'none',
       cursor: 'pointer',
-      transition: 'all 0.3s ease',
-      boxShadow: '0 10px 40px rgba(6, 182, 212, 0.3)'
+      transition: 'all 0.3s ease'
     }
   };
 
@@ -335,9 +300,7 @@ export default function VoidHacksBenefits() {
 
       <div style={styles.content}>
         <div style={styles.header}>
-          <div style={styles.versionTag}>
-            WHAT YOU'LL GET
-          </div>
+          <div style={styles.versionTag}>WHAT YOU'LL GET</div>
           <h2 style={styles.title}>
             Hackathon <span style={styles.titleGradient}>Benefits</span>
           </h2>
@@ -347,79 +310,43 @@ export default function VoidHacksBenefits() {
         </div>
 
         <div style={styles.benefitsGrid}>
-          {benefits.map((benefit, index) => {
+          {benefits.map((benefit, i) => {
             const Icon = benefit.icon;
-            const isHovered = hoveredCard === index;
-            
+            const isHovered = hoveredCard === i;
             return (
               <div
-                key={index}
+                key={i}
                 style={{
                   ...styles.benefitCard,
-                  ...(isVisible ? {
-                    ...styles.benefitCardVisible,
-                    transitionDelay: `${index * 0.1}s`
-                  } : {}),
+                  ...(isVisible ? { ...styles.benefitCardVisible, transitionDelay: `${i * 0.1}s` } : {}),
                   ...(benefit.highlight ? styles.benefitCardHighlight : {}),
-                  ...(isHovered ? {
-                    transform: 'translateY(-10px) scale(1.02)',
-                    borderColor: `${benefit.color}60`,
-                    boxShadow: `0 20px 60px rgba(0,0,0,0.4), 0 0 40px ${benefit.color}40`
-                  } : {})
+                  ...(isHovered
+                    ? {
+                        transform: 'translateY(-10px) scale(1.02)',
+                        boxShadow: `0 20px 60px rgba(0,0,0,0.4), 0 0 40px ${benefit.color}40`
+                      }
+                    : {})
                 }}
-                onMouseEnter={() => setHoveredCard(index)}
+                onMouseEnter={() => setHoveredCard(i)}
                 onMouseLeave={() => setHoveredCard(null)}
               >
                 <div
                   style={{
-                    ...styles.cardGlow,
-                    background: `radial-gradient(circle at 50% 0%, ${benefit.color}30 0%, transparent 70%)`,
-                    opacity: isHovered ? 1 : 0
-                  }}
-                ></div>
-
-                <div
-                  style={{
                     ...styles.iconWrapper,
                     background: `${benefit.color}15`,
-                    border: `2px solid ${benefit.color}40`,
-                    ...(isHovered ? {
-                      transform: 'scale(1.1) rotate(5deg)',
-                      boxShadow: `0 10px 30px ${benefit.color}40`
-                    } : {})
+                    border: `2px solid ${benefit.color}40`
                   }}
                 >
-                  <div
-                    style={{
-                      ...styles.iconGlow,
-                      background: benefit.gradient
-                    }}
-                  ></div>
-                  <Icon
-                    size={40}
-                    color={benefit.color}
-                    style={{
-                      position: 'relative',
-                      zIndex: 1,
-                      filter: 'drop-shadow(0 0 10px rgba(0,0,0,0.5))'
-                    }}
-                  />
+                  <Icon size={40} color={benefit.color} />
                 </div>
-
                 <h3 style={styles.cardTitle}>{benefit.title}</h3>
                 <p style={styles.cardDescription}>{benefit.description}</p>
-                
                 <div
                   style={{
                     ...styles.cardStats,
                     background: `${benefit.color}20`,
                     color: benefit.color,
-                    border: `1px solid ${benefit.color}40`,
-                    ...(isHovered ? {
-                      background: benefit.gradient,
-                      color: '#fff',
-                      transform: 'scale(1.05)'
-                    } : {})
+                    border: `1px solid ${benefit.color}40`
                   }}
                 >
                   {benefit.stats}
@@ -430,48 +357,23 @@ export default function VoidHacksBenefits() {
         </div>
 
         <div style={styles.ctaSection}>
-          <h3 style={styles.ctaTitle}>
-            Ready to Experience It All?
-          </h3>
+          <h3 style={styles.ctaTitle}>Ready to Experience It All?</h3>
           <p style={styles.ctaDescription}>
             Join 200+ talented hackers for 24 hours of innovation, learning, and incredible opportunities. Register now and be part of Central India's biggest hackathon!
           </p>
-          <button
-            style={styles.ctaButton}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.transform = 'scale(1.05) translateY(-2px)';
-              e.currentTarget.style.boxShadow = '0 15px 50px rgba(6, 182, 212, 0.5)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.transform = 'scale(1) translateY(0)';
-              e.currentTarget.style.boxShadow = '0 10px 40px rgba(6, 182, 212, 0.3)';
-            }}
-          >
-            Register Your Team Now
-          </button>
+          <button style={styles.ctaButton}>Register Your Team Now</button>
         </div>
       </div>
 
       <style>{`
         @keyframes float {
-          0%, 100% { transform: translate(0, 0); }
-          50% { transform: translate(30px, -30px); }
+          0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-30px)}
         }
-
-        @keyframes fadeIn {
-          from { opacity: 0; transform: translateY(-10px); }
-          to { opacity: 1; transform: translateY(0); }
+        @media (max-width: 1024px) {
+          .benefitsGrid { grid-template-columns: repeat(2, 1fr) !important; }
         }
-
-        @media (max-width: 768px) {
-          h2 { font-size: 2.5rem !important; }
-          h3 { font-size: 1.75rem !important; }
-        }
-
         @media (max-width: 640px) {
-          .benefitsGrid {
-            grid-template-columns: 1fr !important;
-          }
+          .benefitsGrid { grid-template-columns: 1fr !important; }
         }
       `}</style>
     </div>
