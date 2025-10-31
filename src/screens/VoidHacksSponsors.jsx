@@ -17,20 +17,33 @@ import yhills from "../assets/previousSponsers/logos/yhills.png"
 export default function VoidHacksSponsors() {
 
   const sponsors = [
-    { name: 'apptestify', tier: 'platinum', color: '#06b6d4', logo: apptestify },
-    { name: 'DMW', tier: 'platinum', color: '#8b5cf6', logo: dmw },
-    { name: 'GitHub', tier: 'gold', color: '#22d3ee', logo: gitHub },
-    { name: 'helloIceCream', tier: 'gold', color: '#a855f7', logo: helloIceCream },
-    { name: 'IEEE', tier: 'silver', color: '#ec4899', logo: ieee },
-    { name: 'infoviam', tier: 'silver', color: '#06b6d4', logo: infoviam },
-    { name: 'innogent', tier: 'silver', color: '#8b5cf6', logo: innogent },
-    { name: 'jetBrains', tier: 'bronze', color: '#22d3ee', logo: jetBrains },
-    { name: 'microsoft', tier: 'bronze', color: '#a855f7', logo: microsoft },
-    { name: 'plam', tier: 'bronze', color: '#ec4899', logo: plam },
-    { name: 'programmerPoint', tier: 'bronze', color: '#ec4899', logo: programmerPoint },
-    { name: 'simpleShiksha', tier: 'bronze', color: '#ec4899', logo: simpleShiksha },
-    { name: 'stickermule', tier: 'bronze', color: '#ec4899', logo: stickermule },
-    { name: 'yhills', tier: 'bronze', color: '#ec4899', logo: yhills }
+    { name: 'Coming Soon', tier: '', color: '#06b6d4', logo: "" },
+    { name: 'Coming Soon', tier: '', color: '#06b6d4', logo: "" },
+    { name: 'Coming Soon', tier: '', color: '#06b6d4', logo: "" },
+    { name: 'Coming Soon', tier: '', color: '#06b6d4', logo: "" },
+    { name: 'Coming Soon', tier: '', color: '#06b6d4', logo: "" },
+    { name: 'Coming Soon', tier: '', color: '#06b6d4', logo: "" },
+    { name: 'Coming Soon', tier: '', color: '#06b6d4', logo: "" },
+    { name: 'Coming Soon', tier: '', color: '#06b6d4', logo: "" },
+    { name: 'Coming Soon', tier: '', color: '#06b6d4', logo: "" },
+    { name: 'Coming Soon', tier: '', color: '#06b6d4', logo: "" },
+    { name: 'Coming Soon', tier: '', color: '#06b6d4', logo: "" },
+    { name: 'Coming Soon', tier: '', color: '#06b6d4', logo: "" },
+    { name: 'Coming Soon', tier: '', color: '#06b6d4', logo: "" },
+    // { name: 'apptestify', tier: 'platinum', color: '#06b6d4', logo: apptestify },
+    // { name: 'DMW', tier: 'platinum', color: '#8b5cf6', logo: dmw },
+    // { name: 'GitHub', tier: 'gold', color: '#22d3ee', logo: gitHub },
+    // { name: 'helloIceCream', tier: 'gold', color: '#a855f7', logo: helloIceCream },
+    // { name: 'IEEE', tier: 'silver', color: '#ec4899', logo: ieee },
+    // { name: 'infoviam', tier: 'silver', color: '#06b6d4', logo: infoviam },
+    // { name: 'innogent', tier: 'silver', color: '#8b5cf6', logo: innogent },
+    // { name: 'jetBrains', tier: 'bronze', color: '#22d3ee', logo: jetBrains },
+    // { name: 'microsoft', tier: 'bronze', color: '#a855f7', logo: microsoft },
+    // { name: 'plam', tier: 'bronze', color: '#ec4899', logo: plam },
+    // { name: 'programmerPoint', tier: 'bronze', color: '#ec4899', logo: programmerPoint },
+    // { name: 'simpleShiksha', tier: 'bronze', color: '#ec4899', logo: simpleShiksha },
+    // { name: 'stickermule', tier: 'bronze', color: '#ec4899', logo: stickermule },
+    // { name: 'yhills', tier: 'bronze', color: '#ec4899', logo: yhills }
   ];
 
   // Duplicate for seamless loop
@@ -265,21 +278,21 @@ export default function VoidHacksSponsors() {
       </div>
 
       <div style={styles.content}>
-        <div style={styles.header}>
-          <div style={styles.versionTag}>
+        <div style={styles.header} className="sponsors-header">
+          <div style={styles.versionTag} className="version-tag">
             TRUSTED BY THE BEST
           </div>
-          <h2 style={styles.title}>
-            Previous Year <span style={styles.titleGradient}>Sponsors</span>
+          <h2 style={styles.title} className="sponsors-title">
+             <span style={styles.titleGradient}>Sponsors</span>
           </h2>
-          <p style={styles.subtitle}>POWERING INNOVATION SINCE 2018</p>
+          <p style={styles.subtitle} className="sponsors-subtitle">POWERING INNOVATION SINCE 2018</p>
         </div>
 
         <div style={styles.marqueeRow}>
           <div style={styles.marqueeWrapper}>
-            <div style={styles.fadeLeft}></div>
-            <div style={styles.fadeRight}></div>
-            <div style={styles.marqueeContent}>
+            <div style={styles.fadeLeft} className="fade-left"></div>
+            <div style={styles.fadeRight} className="fade-right"></div>
+            <div style={styles.marqueeContent} className="marquee-content">
               {duplicatedSponsors.map((sponsor, index) => (
                 <div
                   key={index}
@@ -287,6 +300,7 @@ export default function VoidHacksSponsors() {
                     ...styles.sponsorCard,
                     borderColor: `${sponsor.color}30`
                   }}
+                  className="sponsor-card"
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-10px) scale(1.05)';
                     e.currentTarget.style.borderColor = `${sponsor.color}60`;
@@ -326,7 +340,7 @@ export default function VoidHacksSponsors() {
                       e.target.style.display = 'none';
                     }}
                   />
-                  <div style={styles.sponsorName}>{sponsor.name}</div>
+                  <div style={styles.sponsorName} className="sponsor-name">{sponsor.name}</div>
                   <div
                     style={{
                       ...styles.tierBadge,
@@ -334,6 +348,7 @@ export default function VoidHacksSponsors() {
                       color: sponsor.color,
                       border: `1px solid ${sponsor.color}40`
                     }}
+                    className="tier-badge"
                   >
                     {sponsor.tier}
                   </div>
@@ -345,9 +360,9 @@ export default function VoidHacksSponsors() {
 
         <div style={styles.marqueeRow}>
           <div style={styles.marqueeWrapper}>
-            <div style={styles.fadeLeft}></div>
-            <div style={styles.fadeRight}></div>
-            <div style={styles.marqueeContentFast}>
+            <div style={styles.fadeLeft} className="fade-left"></div>
+            <div style={styles.fadeRight} className="fade-right"></div>
+            <div style={styles.marqueeContentFast} className="marquee-content-fast">
               {[...duplicatedSponsors].reverse().map((sponsor, index) => (
                 <div
                   key={index}
@@ -355,6 +370,7 @@ export default function VoidHacksSponsors() {
                     ...styles.sponsorCard,
                     borderColor: `${sponsor.color}30`
                   }}
+                  className="sponsor-card"
                   onMouseEnter={(e) => {
                     e.currentTarget.style.transform = 'translateY(-10px) scale(1.05)';
                     e.currentTarget.style.borderColor = `${sponsor.color}60`;
@@ -394,7 +410,7 @@ export default function VoidHacksSponsors() {
                       e.target.style.display = 'none';
                     }}
                   />
-                  <div style={styles.sponsorName}>{sponsor.name}</div>
+                  <div style={styles.sponsorName} className="sponsor-name">{sponsor.name}</div>
                   <div
                     style={{
                       ...styles.tierBadge,
@@ -402,6 +418,7 @@ export default function VoidHacksSponsors() {
                       color: sponsor.color,
                       border: `1px solid ${sponsor.color}40`
                     }}
+                    className="tier-badge"
                   >
                     {sponsor.tier}
                   </div>
@@ -412,20 +429,20 @@ export default function VoidHacksSponsors() {
         </div>
         
         <div style={styles.info}>
-        <div style={styles.statsBar}>
-          <div style={styles.statItem}>
-            <div style={styles.statNumber}>10+</div>
-            <div style={styles.statLabel}>Sponsors</div>
+          <div style={styles.statsBar} className="stats-bar">
+            <div style={styles.statItem} className="stat-item">
+              <div style={styles.statNumber} className="stat-number">10+</div>
+              <div style={styles.statLabel} className="stat-label">Sponsors</div>
+            </div>
+            <div style={styles.statItem} className="stat-item">
+              <div style={{...styles.statNumber, background: 'linear-gradient(to right, #a855f7, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}} className="stat-number">6+</div>
+              <div style={styles.statLabel} className="stat-label">Years</div>
+            </div>
+            <div style={styles.statItem} className="stat-item">
+              <div style={{...styles.statNumber, background: 'linear-gradient(to right, #ec4899, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}} className="stat-number">₹10L+</div>
+              <div style={styles.statLabel} className="stat-label">Prize Pool</div>
+            </div>
           </div>
-          <div style={styles.statItem}>
-            <div style={{...styles.statNumber, background: 'linear-gradient(to right, #a855f7, #ec4899)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}}>6+</div>
-            <div style={styles.statLabel}>Years</div>
-          </div>
-          <div style={styles.statItem}>
-            <div style={{...styles.statNumber, background: 'linear-gradient(to right, #ec4899, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}}>₹10L+</div>
-            <div style={styles.statLabel}>Prize Pool</div>
-          </div>
-        </div>
         </div>
         
       </div>
@@ -441,8 +458,158 @@ export default function VoidHacksSponsors() {
           50% { opacity: 0.2; }
         }
 
+        /* Tablet styles */
         @media (max-width: 768px) {
-          h2 { font-size: 2rem !important; }
+          .sponsors-header {
+            margin-bottom: 2.5rem !important;
+          }
+
+          .version-tag {
+            font-size: 0.75rem !important;
+            padding: 0.4rem 0.875rem !important;
+          }
+
+          .sponsors-title {
+            font-size: 2.25rem !important;
+          }
+
+          .sponsors-subtitle {
+            font-size: 0.875rem !important;
+          }
+
+          .sponsor-card {
+            width: 220px !important;
+            height: 120px !important;
+            padding: 1.25rem !important;
+          }
+
+          .sponsor-logo {
+            width: 100px !important;
+            height: 50px !important;
+          }
+
+          .sponsor-name {
+            font-size: 1.25rem !important;
+            margin-top: 0.25rem !important;
+          }
+
+          .tier-badge {
+            font-size: 0.65rem !important;
+            padding: 0.2rem 0.6rem !important;
+          }
+
+          .fade-left,
+          .fade-right {
+            width: 100px !important;
+          }
+
+          .stats-bar {
+            gap: 2rem !important;
+            padding: 1.5rem !important;
+            margin-left: 1rem !important;
+            margin-right: 1rem !important;
+          }
+
+          .stat-number {
+            font-size: 2rem !important;
+          }
+
+          .stat-label {
+            font-size: 0.75rem !important;
+          }
+
+          .marquee-content,
+          .marquee-content-fast {
+            gap: 1.5rem !important;
+          }
+        }
+
+        /* Mobile styles */
+        @media (max-width: 480px) {
+          .sponsors-title {
+            font-size: 1.75rem !important;
+          }
+
+          .sponsors-subtitle {
+            font-size: 0.75rem !important;
+            letter-spacing: 0.05em !important;
+          }
+
+          .sponsor-card {
+            width: 180px !important;
+            height: 100px !important;
+            padding: 1rem !important;
+            gap: 0.5rem !important;
+          }
+
+          .sponsor-logo {
+            width: 80px !important;
+            height: 40px !important;
+          }
+
+          .sponsor-name {
+            font-size: 1rem !important;
+            margin-top: 0 !important;
+          }
+
+          .tier-badge {
+            font-size: 0.6rem !important;
+            padding: 0.15rem 0.5rem !important;
+          }
+
+          .fade-left,
+          .fade-right {
+            width: 60px !important;
+          }
+
+          .stats-bar {
+            flex-direction: column !important;
+            gap: 1.5rem !important;
+            padding: 1.25rem !important;
+            margin: 2.5rem 1rem 0 !important;
+          }
+
+          .stat-item {
+            width: 100%;
+          }
+
+          .stat-number {
+            font-size: 2.5rem !important;
+          }
+
+          .stat-label {
+            font-size: 0.8rem !important;
+          }
+
+          .marquee-content,
+          .marquee-content-fast {
+            gap: 1rem !important;
+          }
+        }
+
+        /* Extra small mobile */
+        @media (max-width: 360px) {
+          .sponsors-title {
+            font-size: 1.5rem !important;
+          }
+
+          .sponsor-card {
+            width: 160px !important;
+            height: 90px !important;
+          }
+
+          .sponsor-logo {
+            width: 70px !important;
+            height: 35px !important;
+          }
+
+          .sponsor-name {
+            font-size: 0.875rem !important;
+          }
+
+          .stat-number {
+            font-size: 2rem !important;
+          }
         }
 
         @media (prefers-reduced-motion: reduce) {

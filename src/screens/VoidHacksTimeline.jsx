@@ -3,7 +3,7 @@ import React, { useEffect, useRef, useState } from 'react';
 export default function VoidHacksTimeline() {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
-  const [show , setShow] = useState(true);
+  const [show, setShow] = useState(true);
   const timelineRef = useRef(null);
 
   useEffect(() => {
@@ -119,6 +119,7 @@ export default function VoidHacksTimeline() {
       category: 'Break'
     },
   ];
+
   const timelineEvents2 = [
     {
       day: 'Day 2',
@@ -210,19 +211,18 @@ export default function VoidHacksTimeline() {
       color: '#a855f7',
       category: 'End'
     }
-  ]
+  ];
+
   const styles = {
-   
     container: {
       position: 'relative',
-      // width: '100%',
       minHeight: '100vh',
       backgroundColor: '#000',
       padding: '5rem 1.5rem',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
       overflowX: 'hidden',
-      overflowY: 'auto',     // ✅ allows vertical scroll but removes horizontal overflow
-  boxSizing: 'border-box' // ✅ prevents hidden overflow due to margins/padding
+      overflowY: 'auto',
+      boxSizing: 'border-box'
     },
     backgroundEffects: {
       position: 'fixed',
@@ -510,6 +510,20 @@ export default function VoidHacksTimeline() {
       fontSize: '0.875rem',
       lineHeight: 1.6
     },
+    toggleButton: {
+      padding: '0.875rem 2rem',
+      background: 'linear-gradient(to right, #06b6d4, #a855f7)',
+      borderRadius: '9999px',
+      color: '#fff',
+      fontWeight: 'bold',
+      fontSize: '1rem',
+      border: 'none',
+      cursor: 'pointer',
+      transition: 'all 0.3s',
+      marginTop: '2rem',
+      marginLeft: '5rem',
+      boxShadow: '0 0 20px rgba(6, 182, 212, 0.3)'
+    },
     legend: {
       display: 'flex',
       flexWrap: 'wrap',
@@ -539,7 +553,7 @@ export default function VoidHacksTimeline() {
     }
   };
 
-  const categories1 = [...new Set(timelineEvents.map(e => e.category)) ];
+  const categories1 = [...new Set(timelineEvents.map(e => e.category))];
   const categories2 = [...new Set(timelineEvents2.map(e => e.category))];
   const categories = [...new Set([...categories1, ...categories2])];
 
@@ -552,20 +566,20 @@ export default function VoidHacksTimeline() {
       </div>
 
       <div style={styles.content}>
-        <div style={styles.header}>
-          <div style={styles.versionTag}>
+        <div style={styles.header} className="timeline-header">
+          <div style={styles.versionTag} className="version-tag">
             SCHEDULE v7.0
           </div>
-          <h2 style={styles.title}>
+          <h2 style={styles.title} className="timeline-title">
             Event <span style={styles.titleGradient}>Timeline</span>
           </h2>
-          <p style={styles.subtitle}>24 HOURS OF PURE INNOVATION</p>
-          <p style={styles.dateRange}>28 NOV 2025 → 29 NOV 2025</p>
+          <p style={styles.subtitle} className="timeline-subtitle">24 HOURS OF PURE INNOVATION</p>
+          <p style={styles.dateRange} className="date-range">28 NOV 2025 → 29 NOV 2025</p>
         </div>
 
         <div style={styles.timelineContainer}>
-          <div style={styles.timelineWrapper}>
-            <div style={styles.centralLine}></div>
+          <div style={styles.timelineWrapper} className="timeline-wrapper">
+            <div style={styles.centralLine} className="central-line"></div>
             <div style={styles.glowingLine}></div>
             <div style={styles.glowingLine2}></div>
             <div style={styles.glowingLine3}></div>
@@ -583,9 +597,10 @@ export default function VoidHacksTimeline() {
                   } : {})
                 }}
                 onMouseEnter={() => setActiveIndex(index)}
+                className="timeline-item"
               >
                 {index === 0 || timelineEvents[index - 1].day !== event.day ? (
-                  <div style={styles.dayLabel}>{event.day}</div>
+                  <div style={styles.dayLabel} className="day-label">{event.day}</div>
                 ) : null}
                 
                 <div
@@ -597,6 +612,7 @@ export default function VoidHacksTimeline() {
                       boxShadow: `0 0 20px ${event.color}`
                     } : {})
                   }}
+                  className="timeline-node"
                 >
                   <div
                     style={{
@@ -613,12 +629,13 @@ export default function VoidHacksTimeline() {
                     borderLeftWidth: '3px',
                     ...(activeIndex === index ? styles.timelineCardHover : {})
                   }}
+                  className="timeline-card"
                 >
-                  <div style={styles.cardHeader}>
-                    <div style={styles.cardIcon}>{event.icon}</div>
+                  <div style={styles.cardHeader} className="card-header">
+                    <div style={styles.cardIcon} className="card-icon">{event.icon}</div>
                     <div style={styles.cardTime}>
-                      <div style={styles.time}>{event.time}</div>
-                      <div style={styles.date}>{event.date}</div>
+                      <div style={styles.time} className="event-time">{event.time}</div>
+                      <div style={styles.date} className="event-date">{event.date}</div>
                     </div>
                     <div
                       style={{
@@ -627,96 +644,117 @@ export default function VoidHacksTimeline() {
                         color: event.color,
                         border: `1px solid ${event.color}40`
                       }}
+                      className="category-badge"
                     >
                       {event.category}
                     </div>
                   </div>
-                  <div style={styles.cardBody}>
-                    <h3 style={styles.cardTitle}>{event.title}</h3>
-                    <p style={styles.cardDescription}>{event.description}</p>
+                  <div style={styles.cardBody} className="card-body">
+                    <h3 style={styles.cardTitle} className="card-title">{event.title}</h3>
+                    <p style={styles.cardDescription} className="card-description">{event.description}</p>
                   </div>
                 </div>
               </div>
             ))}
-            {show?<button onClick={()=>{setShow(!show)}}>show</button>:
-            <>
-              {timelineEvents2.map((event, index) => (
-              <div
-                key={index}
-                style={{
-                  ...styles.timelineItem,
-                  ...(isVisible ? {
-                    ...styles.timelineItemVisible,
-                    transitionDelay: `${index * 0.1}s`
-                  } : {})
-                }}
-                onMouseEnter={() => setActiveIndex(index)}
-              >
-                {index === 0 || timelineEvents[index - 1].day !== event.day ? (
-                  <div style={styles.dayLabel}>{event.day}</div>
-                ) : null}
-                
-                <div
-                  style={{
-                    ...styles.timelineNode,
-                    borderColor: event.color,
-                    ...(activeIndex === index ? {
-                      ...styles.timelineNodeActive,
-                      boxShadow: `0 0 20px ${event.color}`
-                    } : {})
-                  }}
-                >
-                  <div
-                    style={{
-                      ...styles.nodeInner,
-                      backgroundColor: activeIndex === index ? event.color : 'transparent'
-                    }}
-                  ></div>
-                </div>
 
-                <div
-                  style={{
-                    ...styles.timelineCard,
-                    borderLeftColor: event.color,
-                    borderLeftWidth: '3px',
-                    ...(activeIndex === index ? styles.timelineCardHover : {})
-                  }}
-                >
-                  <div style={styles.cardHeader}>
-                    <div style={styles.cardIcon}>{event.icon}</div>
-                    <div style={styles.cardTime}>
-                      <div style={styles.time}>{event.time}</div>
-                      <div style={styles.date}>{event.date}</div>
-                    </div>
+            {show ? (
+              <button 
+                onClick={() => setShow(!show)} 
+                style={styles.toggleButton}
+                className="toggle-button"
+              >
+                Show Day 2 Schedule →
+              </button>
+            ) : (
+              <>
+                {timelineEvents2.map((event, index) => (
+                  <div
+                    key={`day2-${index}`}
+                    style={{
+                      ...styles.timelineItem,
+                      ...(isVisible ? {
+                        ...styles.timelineItemVisible,
+                        transitionDelay: `${index * 0.1}s`
+                      } : {})
+                    }}
+                    onMouseEnter={() => setActiveIndex(timelineEvents.length + index)}
+                    className="timeline-item"
+                  >
+                    {index === 0 ? (
+                      <div style={styles.dayLabel} className="day-label">{event.day}</div>
+                    ) : null}
+                    
                     <div
                       style={{
-                        ...styles.categoryBadge,
-                        backgroundColor: `${event.color}20`,
-                        color: event.color,
-                        border: `1px solid ${event.color}40`
+                        ...styles.timelineNode,
+                        borderColor: event.color,
+                        ...(activeIndex === timelineEvents.length + index ? {
+                          ...styles.timelineNodeActive,
+                          boxShadow: `0 0 20px ${event.color}`
+                        } : {})
                       }}
+                      className="timeline-node"
                     >
-                      {event.category}
+                      <div
+                        style={{
+                          ...styles.nodeInner,
+                          backgroundColor: activeIndex === timelineEvents.length + index ? event.color : 'transparent'
+                        }}
+                      ></div>
+                    </div>
+
+                    <div
+                      style={{
+                        ...styles.timelineCard,
+                        borderLeftColor: event.color,
+                        borderLeftWidth: '3px',
+                        ...(activeIndex === timelineEvents.length + index ? styles.timelineCardHover : {})
+                      }}
+                      className="timeline-card"
+                    >
+                      <div style={styles.cardHeader} className="card-header">
+                        <div style={styles.cardIcon} className="card-icon">{event.icon}</div>
+                        <div style={styles.cardTime}>
+                          <div style={styles.time} className="event-time">{event.time}</div>
+                          <div style={styles.date} className="event-date">{event.date}</div>
+                        </div>
+                        <div
+                          style={{
+                            ...styles.categoryBadge,
+                            backgroundColor: `${event.color}20`,
+                            color: event.color,
+                            border: `1px solid ${event.color}40`
+                          }}
+                          className="category-badge"
+                        >
+                          {event.category}
+                        </div>
+                      </div>
+                      <div style={styles.cardBody} className="card-body">
+                        <h3 style={styles.cardTitle} className="card-title">{event.title}</h3>
+                        <p style={styles.cardDescription} className="card-description">{event.description}</p>
+                      </div>
                     </div>
                   </div>
-                  <div style={styles.cardBody}>
-                    <h3 style={styles.cardTitle}>{event.title}</h3>
-                    <p style={styles.cardDescription}>{event.description}</p>
-                  </div>
-                </div>
-              </div>
-            ))}
-            <button onClick={()=>{setShow(!show)}}>show less</button>
-            </>
-            }
+                ))}
+                <button 
+                  onClick={() => setShow(!show)} 
+                  style={styles.toggleButton}
+                  className="toggle-button"
+                >
+                  ← Show Less
+                </button>
+              </>
+            )}
           </div>
         </div>
 
-        <div style={styles.legend}>
+        <div style={styles.legend} className="legend">
           {categories.map((category, index) => {
-            const color = timelineEvents.find(e => e.category === category)?.color || '#06b6d4';
+            const color = timelineEvents.find(e => e.category === category)?.color || 
+                         timelineEvents2.find(e => e.category === category)?.color || '#06b6d4';
             return (
-              <div key={index} style={styles.legendItem}>
+              <div key={index} style={styles.legendItem} className="legend-item">
                 <div style={{ ...styles.legendDot, backgroundColor: color }}></div>
                 <span style={styles.legendLabel}>{category}</span>
               </div>
@@ -739,8 +777,123 @@ export default function VoidHacksTimeline() {
           100% { top: 100%; opacity: 0; }
         }
 
+        .toggle-button:hover {
+          transform: scale(1.05);
+          box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
+        }
+
+        /* Tablet styles */
         @media (max-width: 768px) {
-          h2 { font-size: 2.5rem !important; }
+          .timeline-header {
+            margin-bottom: 3rem !important;
+          }
+          
+          .version-tag {
+            font-size: 0.75rem !important;
+            padding: 0.4rem 0.875rem !important;
+          }
+          
+          .timeline-title {
+            font-size: 2.5rem !important;
+          }
+          
+          .timeline-subtitle {
+            font-size: 1rem !important;
+          }
+          
+          .date-range {
+            font-size: 0.875rem !important;
+          }
+          
+          .timeline-wrapper {
+            padding-left: 1rem !important;
+          }
+          
+          
+          .timeline-node {
+            left: 0.5rem !important;
+            width: 1.75rem !important;
+            height: 1.75rem !important;
+            top: 1.25rem !important;
+          }
+          
+          .timeline-card {
+            margin-left: 3.5rem !important;
+            padding: 1rem !important;
+          }
+          
+          .card-header {
+            gap: 0.75rem !important;
+            flex-wrap: wrap !important;
+          }
+          
+          .card-icon {
+            font-size: 1.75rem !important;
+          }
+          
+          .event-time {
+            font-size: 1.25rem !important;
+          }
+          
+          .event-date {
+            font-size: 0.7rem !important;
+          }
+          
+          .category-badge {
+            font-size: 0.65rem !important;
+            padding: 0.2rem 0.6rem !important;
+          }
+          
+          .card-body {
+            margin-left: 2.5rem !important;
+          }
+          
+          .card-title {
+            
+          }
+          
+          .card-description {
+            font-size: 0.8125rem !important;
+          }
+          
+          .toggle-button {
+            margin-left: 3.5rem !important;
+            font-size: 0.875rem !important;
+            padding: 0.75rem 1.5rem !important;
+          }
+          
+          .legend {
+            padding: 1.5rem !important;
+            gap: 0.75rem !important;
+          }
+          
+          .legend-item {
+            font-size: 0.8125rem !important;
+          }
+        }
+
+        /* Mobile styles */
+        @media (max-width: 480px) {
+          .timeline-title {
+            font-size: 2rem !important;
+          }
+          
+          .timeline-subtitle {
+            font-size: 0.875rem !important;
+          }
+          
+          .card-header {
+            
+            align-items: flex-start !important;
+          }
+          
+          .category-badge {
+            margin-left: 0 !important;
+          }
+          
+          .card-body {
+            margin-left: 0 !important;
+          }
         }
       `}</style>
     </div>

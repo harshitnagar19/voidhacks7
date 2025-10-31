@@ -4,9 +4,17 @@ import { Brain, DollarSign, Smartphone, Code, Sparkles, TrendingUp, Cpu, Zap } f
 export default function VoidHacksDomains() {
   const [activeTab, setActiveTab] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
+  const [isMobile, setIsMobile] = useState(false);
   const sectionRef = useRef(null);
 
   useEffect(() => {
+    const checkMobile = () => {
+      setIsMobile(window.innerWidth < 768);
+    };
+    
+    checkMobile();
+    window.addEventListener('resize', checkMobile);
+
     const observer = new IntersectionObserver(
       (entries) => {
         if (entries[0].isIntersecting) {
@@ -21,6 +29,7 @@ export default function VoidHacksDomains() {
     }
 
     return () => {
+      window.removeEventListener('resize', checkMobile);
       if (sectionRef.current) {
         observer.unobserve(sectionRef.current);
       }
@@ -107,7 +116,7 @@ export default function VoidHacksDomains() {
       position: 'relative',
       minHeight: '100vh',
       backgroundColor: '#000',
-      padding: '5rem 1.5rem',
+      padding: 'clamp(2rem, 5vw, 5rem) clamp(1rem, 3vw, 1.5rem)',
       fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif',
       overflow: 'hidden'
     },
@@ -123,24 +132,24 @@ export default function VoidHacksDomains() {
     gradient1: {
       position: 'absolute',
       top: '15%',
-      left: '10%',
-      width: '500px',
-      height: '500px',
+      left: isMobile ? '-20%' : '10%',
+      width: isMobile ? '300px' : '500px',
+      height: isMobile ? '300px' : '500px',
       backgroundColor: '#06b6d4',
       borderRadius: '50%',
-      filter: 'blur(120px)',
+      filter: isMobile ? 'blur(80px)' : 'blur(120px)',
       opacity: 0.15,
       animation: 'float 8s ease-in-out infinite'
     },
     gradient2: {
       position: 'absolute',
       bottom: '15%',
-      right: '10%',
-      width: '500px',
-      height: '500px',
+      right: isMobile ? '-20%' : '10%',
+      width: isMobile ? '300px' : '500px',
+      height: isMobile ? '300px' : '500px',
       backgroundColor: '#a855f7',
       borderRadius: '50%',
-      filter: 'blur(120px)',
+      filter: isMobile ? 'blur(80px)' : 'blur(120px)',
       opacity: 0.15,
       animation: 'float 10s ease-in-out infinite reverse'
     },
@@ -152,27 +161,27 @@ export default function VoidHacksDomains() {
     },
     header: {
       textAlign: 'center',
-      marginBottom: '4rem'
+      marginBottom: 'clamp(2rem, 5vw, 4rem)'
     },
     versionTag: {
       display: 'inline-block',
-      padding: '0.5rem 1rem',
+      padding: 'clamp(0.4rem, 2vw, 0.5rem) clamp(0.75rem, 3vw, 1rem)',
       background: 'rgba(6, 182, 212, 0.1)',
       border: '1px solid rgba(6, 182, 212, 0.3)',
       borderRadius: '9999px',
       color: '#22d3ee',
-      fontSize: '0.875rem',
+      fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
       fontFamily: 'monospace',
       marginBottom: '1rem',
       backdropFilter: 'blur(4px)'
     },
     title: {
-      fontSize: '4rem',
+      fontSize: 'clamp(2rem, 8vw, 4rem)',
       fontWeight: '900',
       color: '#fff',
       letterSpacing: '-0.05em',
       marginBottom: '0.5rem',
-      lineHeight: 1
+      lineHeight: 1.1
     },
     titleGradient: {
       background: 'linear-gradient(to right, #22d3ee, #a855f7, #ec4899)',
@@ -182,46 +191,48 @@ export default function VoidHacksDomains() {
     },
     subtitle: {
       color: '#9ca3af',
-      fontSize: '1.25rem',
+      fontSize: 'clamp(0.75rem, 3vw, 1.25rem)',
       fontWeight: '300',
-      letterSpacing: '0.1em',
+      letterSpacing: isMobile ? '0.05em' : '0.1em',
       marginTop: '1rem'
     },
     tabsContainer: {
       display: 'flex',
-      gap: '1rem',
+      gap: 'clamp(0.5rem, 2vw, 1rem)',
       justifyContent: 'center',
-      marginBottom: '3rem',
-      flexWrap: 'wrap'
+      marginBottom: 'clamp(2rem, 4vw, 3rem)',
+      flexWrap: 'wrap',
+      padding: '0 0.5rem'
     },
     tab: {
-      padding: '1rem 2rem',
+      padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1rem, 3vw, 2rem)',
       background: 'rgba(255, 255, 255, 0.03)',
       backdropFilter: 'blur(20px)',
       borderRadius: '9999px',
       border: '2px solid rgba(255, 255, 255, 0.1)',
       color: '#9ca3af',
-      fontSize: '1.125rem',
+      fontSize: 'clamp(0.875rem, 2.5vw, 1.125rem)',
       fontWeight: '700',
       cursor: 'pointer',
       transition: 'all 0.3s ease',
       display: 'flex',
       alignItems: 'center',
-      gap: '0.75rem'
+      gap: 'clamp(0.5rem, 1.5vw, 0.75rem)',
+      whiteSpace: 'nowrap'
     },
     tabActive: {
       color: '#fff',
-      transform: 'scale(1.05)'
+      transform: isMobile ? 'scale(1.02)' : 'scale(1.05)'
     },
     domainContent: {
       opacity: 0,
       animation: 'fadeIn 0.6s ease-out forwards'
     },
     mainCard: {
-      padding: '3rem',
+      padding: 'clamp(1.5rem, 4vw, 3rem)',
       background: 'rgba(255, 255, 255, 0.03)',
       backdropFilter: 'blur(20px)',
-      borderRadius: '2rem',
+      borderRadius: 'clamp(1rem, 3vw, 2rem)',
       border: '2px solid',
       marginBottom: '2rem',
       position: 'relative',
@@ -238,63 +249,67 @@ export default function VoidHacksDomains() {
     },
     mainCardHeader: {
       display: 'flex',
-      alignItems: 'center',
-      gap: '2rem',
-      marginBottom: '2rem',
+      flexDirection: isMobile ? 'column' : 'row',
+      alignItems: isMobile ? 'flex-start' : 'center',
+      gap: 'clamp(1rem, 3vw, 2rem)',
+      marginBottom: 'clamp(1.5rem, 3vw, 2rem)',
       position: 'relative',
       zIndex: 1
     },
     iconWrapper: {
-      width: '100px',
-      height: '100px',
-      borderRadius: '25px',
+      width: 'clamp(60px, 15vw, 100px)',
+      height: 'clamp(60px, 15vw, 100px)',
+      borderRadius: 'clamp(15px, 4vw, 25px)',
       display: 'flex',
       alignItems: 'center',
       justifyContent: 'center',
-      position: 'relative'
+      position: 'relative',
+      flexShrink: 0
     },
     iconGlow: {
       position: 'absolute',
       inset: '-10px',
-      borderRadius: '30px',
+      borderRadius: 'clamp(20px, 5vw, 30px)',
       filter: 'blur(20px)',
       opacity: 0.5
     },
     mainCardTitle: {
-      fontSize: '3rem',
+      fontSize: 'clamp(1.5rem, 5vw, 3rem)',
       fontWeight: '900',
       color: '#fff',
-      marginBottom: '0.5rem'
+      marginBottom: '0.5rem',
+      lineHeight: 1.2
     },
     mainCardSubtitle: {
-      fontSize: '1.25rem',
+      fontSize: 'clamp(0.875rem, 2.5vw, 1.25rem)',
       color: '#9ca3af',
-      fontWeight: '300'
+      fontWeight: '300',
+      lineHeight: 1.4
     },
     mainCardDescription: {
       color: '#d1d5db',
-      fontSize: '1.125rem',
+      fontSize: 'clamp(0.875rem, 2.5vw, 1.125rem)',
       lineHeight: 1.8,
-      marginBottom: '2rem',
+      marginBottom: 'clamp(1.5rem, 3vw, 2rem)',
       position: 'relative',
       zIndex: 1
     },
     grid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fit, minmax(300px, 1fr))',
-      gap: '1.5rem',
-      marginTop: '2rem'
+      gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+      gap: 'clamp(1rem, 2.5vw, 1.5rem)',
+      marginTop: 'clamp(1.5rem, 3vw, 2rem)'
     },
     card: {
-      padding: '2rem',
+      padding: 'clamp(1.25rem, 3vw, 2rem)',
       background: 'rgba(255, 255, 255, 0.03)',
       backdropFilter: 'blur(20px)',
-      borderRadius: '1.5rem',
+      borderRadius: 'clamp(1rem, 2.5vw, 1.5rem)',
       border: '1px solid rgba(255, 255, 255, 0.1)',
       transition: 'all 0.3s ease'
     },
     cardTitle: {
-      fontSize: '1.25rem',
+      fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
       fontWeight: '800',
       color: '#fff',
       marginBottom: '1rem',
@@ -309,7 +324,7 @@ export default function VoidHacksDomains() {
     },
     listItem: {
       color: '#9ca3af',
-      fontSize: '0.95rem',
+      fontSize: 'clamp(0.8rem, 2vw, 0.95rem)',
       marginBottom: '0.75rem',
       paddingLeft: '1.5rem',
       position: 'relative',
@@ -325,13 +340,13 @@ export default function VoidHacksDomains() {
     },
     techStackGrid: {
       display: 'grid',
-      gridTemplateColumns: 'repeat(auto-fill, minmax(120px, 1fr))',
-      gap: '0.75rem'
+      gridTemplateColumns: isMobile ? 'repeat(2, 1fr)' : 'repeat(auto-fill, minmax(100px, 1fr))',
+      gap: 'clamp(0.5rem, 1.5vw, 0.75rem)'
     },
     techBadge: {
-      padding: '0.5rem 1rem',
+      padding: 'clamp(0.4rem, 1.5vw, 0.5rem) clamp(0.6rem, 2vw, 1rem)',
       borderRadius: '9999px',
-      fontSize: '0.875rem',
+      fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
       fontWeight: '600',
       textAlign: 'center',
       transition: 'all 0.3s ease',
@@ -341,6 +356,8 @@ export default function VoidHacksDomains() {
 
   const activeDomain = domains[activeTab];
   const Icon = activeDomain.icon;
+  const iconSize = isMobile ? 35 : 50;
+  const tabIconSize = isMobile ? 18 : 24;
 
   return (
     <div style={styles.container} ref={sectionRef}>
@@ -376,24 +393,24 @@ export default function VoidHacksDomains() {
                     ...styles.tabActive,
                     background: `${domain.color}15`,
                     borderColor: `${domain.color}60`,
-                    boxShadow: `0 0 30px ${domain.color}40`
+                    boxShadow: `0 0 ${isMobile ? '20px' : '30px'} ${domain.color}40`
                   } : {})
                 }}
                 onClick={() => setActiveTab(index)}
                 onMouseEnter={(e) => {
-                  if (!isActive) {
+                  if (!isActive && !isMobile) {
                     e.currentTarget.style.borderColor = `${domain.color}40`;
                     e.currentTarget.style.color = domain.color;
                   }
                 }}
                 onMouseLeave={(e) => {
-                  if (!isActive) {
+                  if (!isActive && !isMobile) {
                     e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
                     e.currentTarget.style.color = '#9ca3af';
                   }
                 }}
               >
-                <TabIcon size={24} color={isActive ? domain.color : '#9ca3af'} />
+                <TabIcon size={tabIconSize} color={isActive ? domain.color : '#9ca3af'} />
                 {domain.title}
               </button>
             );
@@ -428,7 +445,7 @@ export default function VoidHacksDomains() {
                     background: activeDomain.gradient
                   }}
                 ></div>
-                <Icon size={50} color={activeDomain.color} style={{ position: 'relative', zIndex: 1 }} />
+                <Icon size={iconSize} color={activeDomain.color} style={{ position: 'relative', zIndex: 1 }} />
               </div>
               <div>
                 <h3 style={styles.mainCardTitle}>{activeDomain.fullTitle}</h3>
@@ -444,12 +461,16 @@ export default function VoidHacksDomains() {
               <div
                 style={styles.card}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = `${activeDomain.color}40`;
-                  e.currentTarget.style.transform = 'translateY(-5px)';
+                  if (!isMobile) {
+                    e.currentTarget.style.borderColor = `${activeDomain.color}40`;
+                    e.currentTarget.style.transform = 'translateY(-5px)';
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                  e.currentTarget.style.transform = 'translateY(0)';
+                  if (!isMobile) {
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }
                 }}
               >
                 <h4 style={styles.cardTitle}>
@@ -474,12 +495,16 @@ export default function VoidHacksDomains() {
               <div
                 style={styles.card}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = `${activeDomain.color}40`;
-                  e.currentTarget.style.transform = 'translateY(-5px)';
+                  if (!isMobile) {
+                    e.currentTarget.style.borderColor = `${activeDomain.color}40`;
+                    e.currentTarget.style.transform = 'translateY(-5px)';
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                  e.currentTarget.style.transform = 'translateY(0)';
+                  if (!isMobile) {
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }
                 }}
               >
                 <h4 style={styles.cardTitle}>
@@ -497,14 +522,18 @@ export default function VoidHacksDomains() {
                         border: `1px solid ${activeDomain.color}40`
                       }}
                       onMouseEnter={(e) => {
-                        e.currentTarget.style.background = activeDomain.gradient;
-                        e.currentTarget.style.color = '#fff';
-                        e.currentTarget.style.transform = 'scale(1.05)';
+                        if (!isMobile) {
+                          e.currentTarget.style.background = activeDomain.gradient;
+                          e.currentTarget.style.color = '#fff';
+                          e.currentTarget.style.transform = 'scale(1.05)';
+                        }
                       }}
                       onMouseLeave={(e) => {
-                        e.currentTarget.style.background = `${activeDomain.color}15`;
-                        e.currentTarget.style.color = activeDomain.color;
-                        e.currentTarget.style.transform = 'scale(1)';
+                        if (!isMobile) {
+                          e.currentTarget.style.background = `${activeDomain.color}15`;
+                          e.currentTarget.style.color = activeDomain.color;
+                          e.currentTarget.style.transform = 'scale(1)';
+                        }
                       }}
                     >
                       {tech}
@@ -516,12 +545,16 @@ export default function VoidHacksDomains() {
               <div
                 style={styles.card}
                 onMouseEnter={(e) => {
-                  e.currentTarget.style.borderColor = `${activeDomain.color}40`;
-                  e.currentTarget.style.transform = 'translateY(-5px)';
+                  if (!isMobile) {
+                    e.currentTarget.style.borderColor = `${activeDomain.color}40`;
+                    e.currentTarget.style.transform = 'translateY(-5px)';
+                  }
                 }}
                 onMouseLeave={(e) => {
-                  e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                  e.currentTarget.style.transform = 'translateY(0)';
+                  if (!isMobile) {
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }
                 }}
               >
                 <h4 style={styles.cardTitle}>
@@ -558,9 +591,20 @@ export default function VoidHacksDomains() {
           to { opacity: 1; transform: translateY(0); }
         }
 
-        @media (max-width: 768px) {
-          h2 { font-size: 2.5rem !important; }
-          h3 { font-size: 2rem !important; }
+        * {
+          box-sizing: border-box;
+        }
+
+        @media (max-width: 480px) {
+          /* Extra small mobile optimization */
+        }
+
+        @media (min-width: 481px) and (max-width: 768px) {
+          /* Tablet optimization */
+        }
+
+        @media (min-width: 769px) and (max-width: 1024px) {
+          /* Desktop small optimization */
         }
       `}</style>
     </div>

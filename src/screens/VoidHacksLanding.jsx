@@ -237,16 +237,6 @@ export default function VoidHacksLanding() {
     logoAccent: {
       color: '#22d3ee'
     },
-    navLinks: {
-      display: 'flex',
-      gap: '2rem',
-      fontSize: '0.875rem'
-    },
-    navLink: {
-      color: '#d1d5db',
-      textDecoration: 'none',
-      transition: 'color 0.3s'
-    },
     registerBtn: {
       padding: '0.5rem 1.5rem',
       background: 'linear-gradient(to right, #06b6d4, #a855f7)',
@@ -255,7 +245,8 @@ export default function VoidHacksLanding() {
       fontWeight: '600',
       border: 'none',
       cursor: 'pointer',
-      transition: 'transform 0.3s'
+      transition: 'transform 0.3s',
+      fontSize: '0.875rem'
     },
     heroContent: {
       position: 'relative',
@@ -317,7 +308,8 @@ export default function VoidHacksLanding() {
       fontSize: '1.5rem',
       color: '#9ca3af',
       fontWeight: '300',
-      letterSpacing: '0.1em'
+      letterSpacing: '0.1em',
+      flexWrap: 'wrap'
     },
     subtitleLine: {
       width: '4rem',
@@ -327,10 +319,10 @@ export default function VoidHacksLanding() {
     cardsGrid: {
       display: 'grid',
       gridTemplateColumns: 'repeat(auto-fit, minmax(250px, 1fr))',
-      gap: '1rem',
+      gap: '0.5rem',
       marginBottom: '3rem',
       width: '100%',
-      maxWidth: '1024px'
+      maxWidth: '1224px'
     },
     card: {
       padding: '1.5rem',
@@ -452,49 +444,49 @@ export default function VoidHacksLanding() {
       </div>
 
       <nav style={styles.nav}>
-        <div style={styles.navContent}>
+        <div style={styles.navContent} className="nav-content">
           <div style={styles.logo}>
-            <div style={styles.logoIcon}>
-              <span style={{ color: '#22d3ee', fontWeight: 'bold', fontSize: '1.25rem' }}>&lt;/&gt;</span>
+            <div style={styles.logoIcon} className="logo-icon">
+              <span style={{ color: '#22d3ee', fontWeight: 'bold', fontSize: '1.25rem' }} className="logo-icon-text">&lt;/&gt;</span>
             </div>
-            <span style={styles.logoText}>void<span style={styles.logoAccent}>hacks() 7.0</span></span>
+            <span style={styles.logoText} className="logo-text">void<span style={styles.logoAccent}>hacks() 7.0</span></span>
           </div>
-          <button style={styles.registerBtn}>Register Now</button>
+          <button style={styles.registerBtn} className="register-btn">Register Now</button>
         </div>
       </nav>
 
-      <div style={styles.heroContent}>
-        <div style={styles.versionTag}>
+      <div style={styles.heroContent} className="hero-content">
+        <div style={styles.versionTag} className="version-tag">
           Version 7.0 • November 28-29, 2025
         </div>
 
         <div style={styles.titleContainer}>
-          <h1 style={styles.mainTitle}>
+          <h1 style={styles.mainTitle} className="main-title">
             <span style={styles.titleVoid}>void</span>
             <span style={styles.titleHacks}>hacks</span>
             <span style={styles.titleParens}>()</span>
           </h1>
-          <div style={styles.subtitle}>
-            <div style={styles.subtitleLine}></div>
-            <p>CAPTURING THE ESSENCE OF INNOVATION</p>
-            <div style={{ ...styles.subtitleLine, background: 'linear-gradient(to left, transparent, #a855f7)' }}></div>
+          <div style={styles.subtitle} className="subtitle">
+            <div style={styles.subtitleLine} className="subtitle-line"></div>
+            <p className="subtitle-text">CAPTURING THE ESSENCE OF INNOVATION</p>
+            <div style={{ ...styles.subtitleLine, background: 'linear-gradient(to left, transparent, #a855f7)' }} className="subtitle-line"></div>
           </div>
         </div>
 
-        <div style={styles.cardsGrid}>
-          <div style={styles.card}>
-            <div style={styles.cardIcon}>⏱️</div>
-            <h3 style={styles.cardTitle}>24 Hours</h3>
+        <div style={styles.cardsGrid} className="cards-grid">
+          <div style={styles.card} className="card">
+            <div style={styles.cardIcon} className="card-icon">⏱️</div>
+            <h3 style={styles.cardTitle} className="card-title">24 Hours</h3>
             <p style={styles.cardDesc}>Non-stop Innovation</p>
           </div>
-          <div style={{ ...styles.card, borderColor: 'rgba(168, 85, 247, 0.2)' }}>
-            <div style={styles.cardIcon}>🏢</div>
-            <h3 style={styles.cardTitle}>OFFLINE</h3>
+          <div style={{ ...styles.card, borderColor: 'rgba(168, 85, 247, 0.2)' }} className="card">
+            <div style={styles.cardIcon} className="card-icon">🏢</div>
+            <h3 style={styles.cardTitle} className="card-title">OFFLINE</h3>
             <p style={styles.cardDesc}>SVVV, Indore</p>
           </div>
-          <div style={{ ...styles.card, borderColor: 'rgba(236, 72, 153, 0.2)' }}>
-            <div style={styles.cardIcon}>🎯</div>
-            <h3 style={styles.cardTitle}>3 Tracks</h3>
+          <div style={{ ...styles.card, borderColor: 'rgba(236, 72, 153, 0.2)' }} className="card">
+            <div style={styles.cardIcon} className="card-icon">🎯</div>
+            <h3 style={styles.cardTitle} className="card-title">3 Tracks</h3>
             <p style={styles.cardDesc}>AI/ML • FinTech • Web/Mobile</p>
           </div>
           <div style={{
@@ -502,39 +494,39 @@ export default function VoidHacksLanding() {
             borderColor: 'rgba(34, 211, 238, 0.4)',
             background: 'linear-gradient(145deg, rgba(6,182,212,0.1), rgba(168,85,247,0.1))',
             boxShadow: '0 0 25px rgba(6,182,212,0.4)'
-          }}>
-            <div style={styles.cardIcon}>💰</div>
+          }} className="card">
+            <div style={styles.cardIcon} className="card-icon">💰</div>
             <h3 style={{
               ...styles.cardTitle,
               background: 'linear-gradient(to right, #06b6d4, #a855f7, #ec4899)',
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent'
-            }}>
+            }} className="card-title">
               ₹10 Lakh+
             </h3>
             <p style={styles.cardDesc}>Total Prize Pool</p>
           </div>
         </div>
 
-        <div style={styles.ctaButtons}>
-          <button style={styles.primaryBtn}>Register Your Team</button>
-          <button style={styles.secondaryBtn}>View Schedule</button>
+        <div style={styles.ctaButtons} className="cta-buttons">
+          <button style={styles.primaryBtn} className="cta-button primary-btn">Register Your Team</button>
+          <button style={styles.secondaryBtn} className="cta-button secondary-btn">View Schedule</button>
         </div>
 
-        <div style={styles.stats}>
+        <div style={styles.stats} className="stats">
           <div style={styles.statItem}>
-            <div style={styles.statNumber}>9000+</div>
-            <div style={styles.statLabel}>Students</div>
+            <div style={styles.statNumber} className="stat-number">9000+</div>
+            <div style={styles.statLabel} className="stat-label">Students</div>
           </div>
-          <div style={styles.divider}></div>
+          <div style={styles.divider} className="divider"></div>
           <div style={styles.statItem}>
-            <div style={{ ...styles.statNumber, background: 'linear-gradient(to right, #a855f7, #9333ea)' }}>200+</div>
-            <div style={styles.statLabel}>Hackers</div>
+            <div style={{ ...styles.statNumber, background: 'linear-gradient(to right, #a855f7, #9333ea)' }} className="stat-number">200+</div>
+            <div style={styles.statLabel} className="stat-label">Hackers</div>
           </div>
-          <div style={styles.divider}></div>
+          <div style={styles.divider} className="divider"></div>
           <div style={styles.statItem}>
-            <div style={{ ...styles.statNumber, background: 'linear-gradient(to right, #ec4899, #db2777)' }}>24hrs</div>
-            <div style={styles.statLabel}>Of Hacking</div>
+            <div style={{ ...styles.statNumber, background: 'linear-gradient(to right, #ec4899, #db2777)' }} className="stat-number">24hrs</div>
+            <div style={styles.statLabel} className="stat-label">Of Hacking</div>
           </div>
         </div>
 
@@ -584,12 +576,206 @@ export default function VoidHacksLanding() {
           transform: scale(1.05);
         }
         
-        a:hover {
-          color: #22d3ee;
+        /* Tablet styles */
+        @media (max-width: 768px) {
+          .nav-content {
+            padding: 0.75rem 1rem !important;
+          }
+          
+          .logo-icon {
+            width: 32px !important;
+            height: 32px !important;
+          }
+          
+          .logo-icon-text {
+            font-size: 1rem !important;
+          }
+          
+          .logo-text {
+            font-size: 1rem !important;
+          }
+          
+          .register-btn {
+            font-size: 0.75rem !important;
+            padding: 0.4rem 1rem !important;
+          }
+          
+          .hero-content {
+            padding: 0 1rem !important;
+            padding-top: 4rem !important;
+          }
+          
+          .version-tag {
+            font-size: 0.75rem !important;
+            padding: 0.4rem 0.875rem !important;
+            margin-bottom: 1.5rem !important;
+          }
+          
+          .main-title {
+            font-size: 3.5rem !important;
+            margin-bottom: 0.75rem !important;
+          }
+          
+          .subtitle {
+            font-size: 1rem !important;
+            gap: 0.75rem !important;
+          }
+          
+          .subtitle-line {
+            width: 2.5rem !important;
+          }
+          
+          .subtitle-text {
+            font-size: 0.875rem !important;
+          }
+          
+          .cards-grid {
+            grid-template-columns: repeat(auto-fit, minmax(180px, 1fr)) !important;
+            gap: 0.5rem !important;
+            margin-bottom: 2rem !important;
+          }
+          
+          .card {
+            padding: 1rem !important;
+          }
+          
+          .card-icon {
+            font-size: 2rem !important;
+            margin-bottom: 0.4rem !important;
+          }
+          
+          .card-title {
+            font-size: 1rem !important;
+          }
+          
+          .cta-buttons {
+            gap: 0.75rem !important;
+            margin-bottom: 2rem !important;
+          }
+          
+          .cta-button {
+            font-size: 1rem !important;
+            padding: 0.875rem 1.75rem !important;
+          }
+          
+          .stats {
+            gap: 1.5rem !important;
+          }
+          
+          .stat-number {
+            font-size: 2.25rem !important;
+          }
+          
+          .stat-label {
+            font-size: 0.75rem !important;
+          }
+          
+          .divider {
+            height: 3rem !important;
+          }
         }
         
-        @media (max-width: 768px) {
-          h1 { font-size: 3rem !important; }
+        /* Mobile styles */
+        @media (max-width: 480px) {
+          .nav-content {
+            padding: 0.625rem 0.875rem !important;
+          }
+          
+          .logo-icon {
+            width: 28px !important;
+            height: 28px !important;
+          }
+          
+          .logo-icon-text {
+            font-size: 0.875rem !important;
+          }
+          
+          .logo-text {
+            font-size: 0.875rem !important;
+          }
+          
+          .register-btn {
+            font-size: 0.7rem !important;
+            padding: 0.375rem 0.875rem !important;
+          }
+          
+          .hero-content {
+            padding: 0 0.875rem !important;
+            padding-top: 3.5rem !important;
+          }
+          
+          .version-tag {
+            font-size: 0.65rem !important;
+            padding: 0.35rem 0.75rem !important;
+            margin-bottom: 1.25rem !important;
+          }
+          
+          .main-title {
+            font-size: 2.5rem !important;
+            margin-bottom: 0.625rem !important;
+          }
+          
+          .subtitle {
+            font-size: 0.875rem !important;
+            gap: 0.5rem !important;
+          }
+          
+          .subtitle-line {
+            width: 2rem !important;
+          }
+          
+          .subtitle-text {
+            font-size: 0.7rem !important;
+            letter-spacing: 0.05em !important;
+          }
+          
+          .cards-grid {
+            grid-template-columns: 1fr !important;
+            gap: 0.5rem !important;
+            margin-bottom: 1.75rem !important;
+          }
+          
+          .card {
+            padding: 0.875rem !important;
+          }
+          
+          .card-icon {
+            font-size: 1.75rem !important;
+            margin-bottom: 0.35rem !important;
+          }
+          
+          .card-title {
+            font-size: 0.9rem !important;
+          }
+          
+          .cta-buttons {
+            gap: 0.625rem !important;
+            margin-bottom: 1.75rem !important;
+            flex-direction: column !important;
+            width: 100% !important;
+          }
+          
+          .cta-button {
+            font-size: 0.9rem !important;
+            padding: 0.75rem 1.5rem !important;
+            width: 100% !important;
+          }
+          
+          .stats {
+            gap: 1rem !important;
+          }
+          
+          .stat-number {
+            font-size: 1.875rem !important;
+          }
+          
+          .stat-label {
+            font-size: 0.7rem !important;
+          }
+          
+          .divider {
+            display: none !important;
+          }
         }
       `}</style>
     </div>

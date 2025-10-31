@@ -78,7 +78,6 @@ export default function VoidHacksBenefits() {
       gradient: 'linear-gradient(135deg, #0891b2, #06b6d4)',
       stats: '15+ Companies'
     },
-    
     {
       icon: Zap,
       title: 'Exclusive API Access',
@@ -195,7 +194,6 @@ export default function VoidHacksBenefits() {
       fontWeight: '300',
       marginTop: '1rem'
     },
-    // ✅ 3 cards per row grid
     benefitsGrid: {
       display: 'grid',
       gridTemplateColumns: 'repeat(3, 1fr)',
@@ -291,7 +289,7 @@ export default function VoidHacksBenefits() {
   };
 
   return (
-    <div style={styles.container} ref={sectionRef}>
+    <div style={styles.container} ref={sectionRef} className="benefits-container">
       <div style={styles.backgroundEffects}>
         <div style={styles.gradient1}></div>
         <div style={styles.gradient2}></div>
@@ -299,17 +297,17 @@ export default function VoidHacksBenefits() {
       </div>
 
       <div style={styles.content}>
-        <div style={styles.header}>
-          <div style={styles.versionTag}>WHAT YOU'LL GET</div>
-          <h2 style={styles.title}>
+        <div style={styles.header} className="benefits-header">
+          <div style={styles.versionTag} className="version-tag">WHAT YOU'LL GET</div>
+          <h2 style={styles.title} className="benefits-title">
             Hackathon <span style={styles.titleGradient}>Benefits</span>
           </h2>
-          <p style={styles.subtitle}>
+          <p style={styles.subtitle} className="benefits-subtitle">
             MORE THAN JUST A COMPETITION - AN EXPERIENCE OF A LIFETIME
           </p>
         </div>
 
-        <div style={styles.benefitsGrid}>
+        <div style={styles.benefitsGrid} className="benefits-grid">
           {benefits.map((benefit, i) => {
             const Icon = benefit.icon;
             const isHovered = hoveredCard === i;
@@ -329,6 +327,7 @@ export default function VoidHacksBenefits() {
                 }}
                 onMouseEnter={() => setHoveredCard(i)}
                 onMouseLeave={() => setHoveredCard(null)}
+                className="benefit-card"
               >
                 <div
                   style={{
@@ -336,11 +335,12 @@ export default function VoidHacksBenefits() {
                     background: `${benefit.color}15`,
                     border: `2px solid ${benefit.color}40`
                   }}
+                  className="icon-wrapper"
                 >
-                  <Icon size={40} color={benefit.color} />
+                  <Icon size={40} color={benefit.color} className="benefit-icon" />
                 </div>
-                <h3 style={styles.cardTitle}>{benefit.title}</h3>
-                <p style={styles.cardDescription}>{benefit.description}</p>
+                <h3 style={styles.cardTitle} className="card-title">{benefit.title}</h3>
+                <p style={styles.cardDescription} className="card-description">{benefit.description}</p>
                 <div
                   style={{
                     ...styles.cardStats,
@@ -348,6 +348,7 @@ export default function VoidHacksBenefits() {
                     color: benefit.color,
                     border: `1px solid ${benefit.color}40`
                   }}
+                  className="card-stats"
                 >
                   {benefit.stats}
                 </div>
@@ -356,12 +357,12 @@ export default function VoidHacksBenefits() {
           })}
         </div>
 
-        <div style={styles.ctaSection}>
-          <h3 style={styles.ctaTitle}>Ready to Experience It All?</h3>
-          <p style={styles.ctaDescription}>
+        <div style={styles.ctaSection} className="cta-section">
+          <h3 style={styles.ctaTitle} className="cta-title">Ready to Experience It All?</h3>
+          <p style={styles.ctaDescription} className="cta-description">
             Join 200+ talented hackers for 24 hours of innovation, learning, and incredible opportunities. Register now and be part of Central India's biggest hackathon!
           </p>
-          <button style={styles.ctaButton}>Register Your Team Now</button>
+          <button style={styles.ctaButton} className="cta-button">Register Your Team Now</button>
         </div>
       </div>
 
@@ -369,11 +370,213 @@ export default function VoidHacksBenefits() {
         @keyframes float {
           0%,100%{transform:translate(0,0)}50%{transform:translate(30px,-30px)}
         }
-        @media (max-width: 1024px) {
-          .benefitsGrid { grid-template-columns: repeat(2, 1fr) !important; }
+        
+        @keyframes fadeIn {
+          from { opacity: 0; transform: translateY(-10px); }
+          to { opacity: 1; transform: translateY(0); }
         }
+
+        /* Tablet styles */
+        @media (max-width: 1024px) {
+          .benefits-container {
+            padding: 4rem 1.25rem !important;
+          }
+
+          .benefits-grid {
+            grid-template-columns: repeat(2, 1fr) !important;
+            gap: 1.5rem !important;
+          }
+
+          .benefits-title {
+            font-size: 3rem !important;
+          }
+
+          .benefits-subtitle {
+            font-size: 1rem !important;
+          }
+
+          .benefit-card {
+            padding: 1.75rem !important;
+          }
+
+          .icon-wrapper {
+            width: 70px !important;
+            height: 70px !important;
+            margin-bottom: 1.25rem !important;
+          }
+
+          .benefit-icon {
+            width: 35px !important;
+            height: 35px !important;
+          }
+
+          .card-title {
+            font-size: 1.35rem !important;
+          }
+
+          .card-description {
+            font-size: 0.9rem !important;
+          }
+
+          .card-stats {
+            font-size: 0.8rem !important;
+            padding: 0.4rem 0.85rem !important;
+          }
+
+          .cta-section {
+            padding: 2.5rem !important;
+          }
+
+          .cta-title {
+            font-size: 2rem !important;
+          }
+
+          .cta-description {
+            font-size: 1rem !important;
+          }
+
+          .cta-button {
+            padding: 0.875rem 2rem !important;
+            font-size: 1rem !important;
+          }
+        }
+
+        /* Mobile styles */
         @media (max-width: 640px) {
-          .benefitsGrid { grid-template-columns: 1fr !important; }
+          .benefits-container {
+            padding: 3rem 1rem !important;
+          }
+
+          .benefits-header {
+            margin-bottom: 3rem !important;
+          }
+
+          .version-tag {
+            font-size: 0.75rem !important;
+            padding: 0.4rem 0.875rem !important;
+          }
+
+          .benefits-grid {
+            grid-template-columns: 1fr !important;
+            gap: 1.25rem !important;
+          }
+
+          .benefits-title {
+            font-size: 2.25rem !important;
+          }
+
+          .benefits-subtitle {
+            font-size: 0.875rem !important;
+            padding: 0 1rem !important;
+          }
+
+          .benefit-card {
+            padding: 1.5rem !important;
+          }
+
+          .icon-wrapper {
+            width: 60px !important;
+            height: 60px !important;
+            margin-bottom: 1rem !important;
+            border-radius: 15px !important;
+          }
+
+          .benefit-icon {
+            width: 30px !important;
+            height: 30px !important;
+          }
+
+          .card-title {
+            font-size: 1.25rem !important;
+            margin-bottom: 0.5rem !important;
+          }
+
+          .card-description {
+            font-size: 0.875rem !important;
+            line-height: 1.6 !important;
+            margin-bottom: 1.25rem !important;
+          }
+
+          .card-stats {
+            font-size: 0.75rem !important;
+            padding: 0.375rem 0.75rem !important;
+          }
+
+          .cta-section {
+            padding: 2rem 1.5rem !important;
+            margin-top: 3rem !important;
+          }
+
+          .cta-title {
+            font-size: 1.75rem !important;
+            margin-bottom: 0.75rem !important;
+          }
+
+          .cta-description {
+            font-size: 0.9375rem !important;
+            margin-bottom: 1.5rem !important;
+            padding: 0 !important;
+          }
+
+          .cta-button {
+            padding: 0.875rem 1.75rem !important;
+            font-size: 0.9375rem !important;
+            width: 100%;
+          }
+        }
+
+        /* Extra small mobile */
+        @media (max-width: 380px) {
+          .benefits-title {
+            font-size: 2rem !important;
+          }
+
+          .benefits-subtitle {
+            font-size: 0.8125rem !important;
+          }
+
+          .benefit-card {
+            padding: 1.25rem !important;
+          }
+
+          .icon-wrapper {
+            width: 55px !important;
+            height: 55px !important;
+          }
+
+          .benefit-icon {
+            width: 28px !important;
+            height: 28px !important;
+          }
+
+          .card-title {
+            font-size: 1.125rem !important;
+          }
+
+          .card-description {
+            font-size: 0.8125rem !important;
+          }
+
+          .cta-title {
+            font-size: 1.5rem !important;
+          }
+
+          .cta-description {
+            font-size: 0.875rem !important;
+          }
+        }
+
+        .cta-button:hover {
+          transform: scale(1.05);
+          box-shadow: 0 10px 30px rgba(6, 182, 212, 0.4);
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+          * {
+            animation-duration: 0.01ms !important;
+            animation-iteration-count: 1 !important;
+            transition-duration: 0.01ms !important;
+          }
         }
       `}</style>
     </div>
