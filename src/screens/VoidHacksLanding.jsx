@@ -1,7 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import * as THREE from 'three';
-
-export default function VoidHacksLanding() {
+export default function VoidHacksLanding({ scheduleRef }) {
   const canvasRef = useRef(null);
   const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
@@ -130,6 +129,10 @@ export default function VoidHacksLanding() {
       window.removeEventListener('mousemove', handleMouseMove);
     };
   }, []);
+
+  const handleViewSchedule = () => {
+    scheduleRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
 
   const styles = {
     container: {
@@ -451,7 +454,12 @@ export default function VoidHacksLanding() {
             </div>
             <span style={styles.logoText} className="logo-text">void<span style={styles.logoAccent}>hacks() 7.0</span></span>
           </div>
-          <button style={styles.registerBtn} className="register-btn">Register Now</button>
+
+          <button 
+          style={styles.registerBtn} 
+          className="register-btn"
+          onClick={() => window.open('https://unstop.com/o/2wGEnLi?lb=5VvzCSm&utm_medium=Share&utm_source=voidhack2161&utm_campaign=Online_coding_challenge', '_blank')}
+          >Register Now</button>
         </div>
       </nav>
 
@@ -502,25 +510,28 @@ export default function VoidHacksLanding() {
               WebkitBackgroundClip: 'text',
               WebkitTextFillColor: 'transparent'
             }} className="card-title">
-              ₹10 Lakh+
+              ₹1 Lakh+
             </h3>
             <p style={styles.cardDesc}>Total Prize Pool</p>
           </div>
         </div>
 
         <div style={styles.ctaButtons} className="cta-buttons">
-          <button style={styles.primaryBtn} className="cta-button primary-btn">Register Your Team</button>
-          <button style={styles.secondaryBtn} className="cta-button secondary-btn">View Schedule</button>
+          <button style={styles.primaryBtn} 
+          className="cta-button primary-btn"
+          onClick={() => window.open('https://unstop.com/o/2wGEnLi?lb=5VvzCSm&utm_medium=Share&utm_source=voidhack2161&utm_campaign=Online_coding_challenge', '_blank')}
+          >Register Your Team</button>
+          <button style={styles.secondaryBtn} className="cta-button secondary-btn" onClick={handleViewSchedule}>View Schedule</button>
         </div>
 
         <div style={styles.stats} className="stats">
           <div style={styles.statItem}>
-            <div style={styles.statNumber} className="stat-number">9000+</div>
+            <div style={styles.statNumber} className="stat-number">900+</div>
             <div style={styles.statLabel} className="stat-label">Students</div>
           </div>
           <div style={styles.divider} className="divider"></div>
           <div style={styles.statItem}>
-            <div style={{ ...styles.statNumber, background: 'linear-gradient(to right, #a855f7, #9333ea)' }} className="stat-number">200+</div>
+            <div style={{ ...styles.statNumber, background: 'linear-gradient(to right, #a855f7, #9333ea)' }} className="stat-number">100+</div>
             <div style={styles.statLabel} className="stat-label">Hackers</div>
           </div>
           <div style={styles.divider} className="divider"></div>

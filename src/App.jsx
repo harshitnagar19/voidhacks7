@@ -1,4 +1,5 @@
 
+import { useRef } from 'react'
 import VoidHacksBenefits from './screens/VoidHacksBenefits'
 import VoidHacksDomains from './screens/VoidHacksDomains'
 import VoidHacksLanding from './screens/VoidHacksLanding'
@@ -7,11 +8,11 @@ import VoidHacksTeam from './screens/VoidHacksTeam'
 import VoidHacksTimeline from './screens/VoidHacksTimeline'
  
 function App() {
-
+  const scheduleRef = useRef(null);
   return (
     <>
-     <VoidHacksLanding/>
-     <VoidHacksTimeline/>
+     <VoidHacksLanding scheduleRef={scheduleRef} />
+     <VoidHacksTimeline ref={scheduleRef} />
      <VoidHacksSponsors/>
      <VoidHacksBenefits/>
      <VoidHacksDomains/>

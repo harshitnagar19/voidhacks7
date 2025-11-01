@@ -431,7 +431,7 @@ export default function VoidHacksSponsors() {
         <div style={styles.info}>
           <div style={styles.statsBar} className="stats-bar">
             <div style={styles.statItem} className="stat-item">
-              <div style={styles.statNumber} className="stat-number">10+</div>
+              <div style={styles.statNumber} className="stat-number">5+</div>
               <div style={styles.statLabel} className="stat-label">Sponsors</div>
             </div>
             <div style={styles.statItem} className="stat-item">
@@ -439,7 +439,7 @@ export default function VoidHacksSponsors() {
               <div style={styles.statLabel} className="stat-label">Years</div>
             </div>
             <div style={styles.statItem} className="stat-item">
-              <div style={{...styles.statNumber, background: 'linear-gradient(to right, #ec4899, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}} className="stat-number">₹10L+</div>
+              <div style={{...styles.statNumber, background: 'linear-gradient(to right, #ec4899, #22d3ee)', WebkitBackgroundClip: 'text', WebkitTextFillColor: 'transparent', backgroundClip: 'text'}} className="stat-number">₹1L+</div>
               <div style={styles.statLabel} className="stat-label">Prize Pool</div>
             </div>
           </div>

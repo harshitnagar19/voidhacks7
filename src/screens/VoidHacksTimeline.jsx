@@ -1,6 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 
-export default function VoidHacksTimeline() {
+export default function VoidHacksTimeline({props, ref}) {
   const [activeIndex, setActiveIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [show, setShow] = useState(true);
@@ -558,7 +558,8 @@ export default function VoidHacksTimeline() {
   const categories = [...new Set([...categories1, ...categories2])];
 
   return (
-    <div style={styles.container} ref={timelineRef}>
+    <div style={styles.container} ref={timelineRef} >
+      <div ref={ref} id="schedule">
       <div style={styles.backgroundEffects}>
         <div style={styles.gradient1}></div>
         <div style={styles.gradient2}></div>
@@ -896,6 +897,7 @@ export default function VoidHacksTimeline() {
           }
         }
       `}</style>
+      </div>
     </div>
   );
 }

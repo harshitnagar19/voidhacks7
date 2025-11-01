@@ -23,11 +23,11 @@ export default function VoidHacksBenefits() {
   const benefits = [
     {
       icon: Trophy,
-      title: '₹10 Lakh Prize Pool',
+      title: '₹1 Lakh Prize Pool',
       description: 'Compete for exciting cash prizes and rewards across multiple tracks',
       color: '#22d3ee',
       gradient: 'linear-gradient(135deg, #06b6d4, #22d3ee)',
-      stats: '₹10L+',
+      stats: '₹1L+',
       highlight: true
     },
     {
@@ -362,7 +362,10 @@ export default function VoidHacksBenefits() {
           <p style={styles.ctaDescription} className="cta-description">
             Join 200+ talented hackers for 24 hours of innovation, learning, and incredible opportunities. Register now and be part of Central India's biggest hackathon!
           </p>
-          <button style={styles.ctaButton} className="cta-button">Register Your Team Now</button>
+          <button style={styles.ctaButton} 
+          className="cta-button"
+          onClick={() => window.open('https://unstop.com/o/2wGEnLi?lb=5VvzCSm&utm_medium=Share&utm_source=voidhack2161&utm_campaign=Online_coding_challenge', '_blank')}
+          >Register Your Team Now</button>
         </div>
       </div>
 

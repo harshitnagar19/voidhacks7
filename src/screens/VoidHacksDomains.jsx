@@ -1,6 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react';
-import { Brain, DollarSign, Smartphone, Code, Sparkles, TrendingUp, Cpu, Zap } from 'lucide-react';
-
+import { Brain, DollarSign, Smartphone, Download, Shield, GraduationCap, Activity } from 'lucide-react';
 export default function VoidHacksDomains() {
   const [activeTab, setActiveTab] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
@@ -11,7 +10,7 @@ export default function VoidHacksDomains() {
     const checkMobile = () => {
       setIsMobile(window.innerWidth < 768);
     };
-    
+
     checkMobile();
     window.addEventListener('resize', checkMobile);
 
@@ -38,78 +37,113 @@ export default function VoidHacksDomains() {
 
   const domains = [
     {
-      id: 'aiml',
-      title: 'AI/ML',
-      fullTitle: 'Artificial Intelligence & Machine Learning',
-      icon: Brain,
-      color: '#22d3ee',
-      gradient: 'linear-gradient(135deg, #06b6d4, #22d3ee)',
-      description: 'Build intelligent systems that learn, predict, and automate',
-      detailedDescription: 'Create smart solutions using machine learning algorithms, neural networks, and AI-powered applications that solve real-world problems.',
-      examples: [
-        'Predictive analytics platforms',
-        'Computer vision applications',
-        'Natural language processing tools',
-        'Recommendation systems',
-        'Chatbots and virtual assistants'
-      ],
-      techStack: ['Python', 'TensorFlow', 'PyTorch', 'Scikit-learn', 'OpenAI API', 'Hugging Face'],
-      challenges: [
-        'Healthcare diagnosis systems',
-        'Smart city solutions',
-        'Educational AI tools',
-        'Agriculture optimization'
-      ]
-    },
-    {
       id: 'fintech',
       title: 'FinTech',
-      fullTitle: 'Financial Technology',
-      icon: DollarSign,
-      color: '#a855f7',
-      gradient: 'linear-gradient(135deg, #8b5cf6, #a855f7)',
-      description: 'Revolutionize finance with cutting-edge digital solutions',
-      detailedDescription: 'Develop innovative financial products, payment systems, and banking solutions that make transactions seamless and secure.',
-      examples: [
-        'Digital payment gateways',
-        'Personal finance managers',
-        'Investment tracking platforms',
-        'Blockchain-based solutions',
-        'Fraud detection systems'
+      fullTitle: 'AI-Powered Fraud Detection & Prevention',
+      icon: Shield,
+      color: '#10b981',
+      gradient: 'linear-gradient(135deg, #059669, #10b981)',
+      description: 'Build intelligent fraud detection systems for secure financial transactions',
+      background: 'With the rapid growth of digital banking, online payments, and fintech platforms, financial fraud has become increasingly sophisticated—ranging from phishing and identity theft to transaction laundering and credit card fraud.',
+      challenge: 'Develop an AI-integrated fraud detection and prevention platform capable of identifying suspicious financial activities in real time.',
+      keyFeatures: [
+        'Machine learning for anomaly detection and behavioral analytics',
+        'Real-time fraud detection pipelines using streaming data',
+        'Data visualization dashboards for monitoring fraud attempts',
+        'Explainable AI (XAI) for transparent decision-making',
+        'User authentication modules with biometric verification'
       ],
-      techStack: ['Node.js', 'React', 'Blockchain', 'Stripe API', 'Plaid', 'Web3.js'],
-      challenges: [
-        'UPI-based payment solutions',
-        'Cryptocurrency wallets',
-        'Budget management apps',
-        'Peer-to-peer lending platforms'
+      techStack: ['Python', 'TensorFlow', 'Scikit-learn', 'Apache Kafka', 'React', 'MongoDB'],
+      requirements: [
+        'Cost-effective and adaptable for banks and startups',
+        'Handle data privacy and compliance (GDPR, RBI, PCI DSS)',
+        'Provide actionable insights and risk scores',
+        'Operate with limited connectivity using edge AI'
+      ],
+      deliverables: [
+        'Working prototype demonstrating fraud detection',
+        'Model performance and scalability report',
+        'Real-world applicability documentation'
       ]
     },
     {
-      id: 'webmobile',
+      id: 'webapp',
       title: 'Web/Mobile',
-      fullTitle: 'Web & Mobile Development',
-      icon: Smartphone,
-      color: '#ec4899',
-      gradient: 'linear-gradient(135deg, #db2777, #ec4899)',
-      description: 'Create stunning applications that users love',
-      detailedDescription: 'Build responsive websites and mobile apps with modern frameworks, delivering exceptional user experiences across all devices.',
-      examples: [
-        'Progressive web applications',
-        'E-commerce platforms',
-        'Social networking apps',
-        'Productivity tools',
-        'Real-time collaboration platforms'
+      fullTitle: 'Next-Gen AI Learning Platform',
+      icon: GraduationCap,
+      color: '#3b82f6',
+      gradient: 'linear-gradient(135deg, #2563eb, #3b82f6)',
+      description: 'Create an intelligent, accessible learning ecosystem for all students',
+      background: 'Education is the foundation of progress, yet millions of students in rural areas face challenges such as limited resources, poor connectivity, and lack of personalized learning.',
+      challenge: 'Develop a next-generation learning platform that provides personalized, affordable, and connectivity-resilient education for both rural and urban students.',
+      keyFeatures: [
+        'AI-driven personalized learning and adaptive assessments',
+        'Offline-first architecture with low-bandwidth support',
+        'Multilingual support with accessibility features',
+        'Community-driven peer-to-peer learning',
+        'Gamified elements for engagement and retention'
       ],
-      techStack: ['React', 'Next.js', 'React Native', 'Flutter', 'Firebase', 'Tailwind CSS'],
-      challenges: [
-        'Student-focused platforms',
-        'Local business solutions',
-        'Community engagement apps',
-        'Gaming and entertainment'
+      techStack: ['React', 'Next.js', 'Python', 'TensorFlow', 'PWA', 'Firebase'],
+      requirements: [
+        'Cost-effective and scalable for diverse backgrounds',
+        'Function with low or intermittent internet',
+        'Support regional languages and accessibility',
+        'Enable mentorship and resource sharing'
+      ],
+      deliverables: [
+        'Working MVP with AI integration and offline capabilities',
+        'Scalability and cost-efficiency report',
+        'Technical documentation of AI models and architecture'
+      ]
+    },
+    {
+      id: 'aiml',
+      title: 'AI/ML',
+      fullTitle: "Alzheimer's Early Detection & Analysis",
+      icon: Activity,
+      color: '#8b5cf6',
+      gradient: 'linear-gradient(135deg, #7c3aed, #8b5cf6)',
+      description: 'Leverage AI for early diagnosis and progression tracking of Alzheimer\'s',
+      background: 'Alzheimer\'s disease affects millions worldwide. Early diagnosis can significantly improve quality of life, but traditional methods are costly, complex, and often delayed.',
+      challenge: 'Develop an AI-powered analysis platform for early detection, diagnosis, and progression tracking of Alzheimer\'s disease using diverse data sources.',
+      keyFeatures: [
+        'Deep learning models for medical imaging analysis (MRI, CT, PET)',
+        'Cognitive and behavioral test analysis',
+        'Speech and facial expression recognition',
+        'Explainable AI for interpretable diagnostics',
+        'Intuitive dashboard for doctors and caregivers'
+      ],
+      techStack: ['Python', 'PyTorch', 'TensorFlow', 'OpenCV', 'NLP', 'React'],
+      requirements: [
+        'Cost-efficient for urban and rural healthcare',
+        'Support low-connectivity scenarios with edge AI',
+        'Ensure data privacy and ethical AI compliance',
+        'Provide predictive analysis for early risk detection'
+      ],
+      deliverables: [
+        'Working prototype for Alzheimer\'s progression analysis',
+        'Technical report on data sources and AI models',
+        'Demonstration of scalability and social impact'
       ]
     }
   ];
+
+  const handleDownloadPDF = (domainId) => {
+    const domain = domains.find(d => d.id === domainId);
+    if (!domain) return;
+  
+    const pdfPath = `public/assets/challenges/${domainId}-challenge.pdf`; // from public folder
+    console.log(pdfPath)
+    window.open(pdfPath, '_blank');
+
+    // const link = document.createElement('a');
+    // link.href = pdfPath;
+    // link.download = `${domain.fullTitle.replace(/\s+/g, '_')}.pdf`;
+    // document.body.appendChild(link);
+    // link.click();
+    // document.body.removeChild(link);
+  };
+  
 
   const styles = {
     container: {
@@ -135,7 +169,7 @@ export default function VoidHacksDomains() {
       left: isMobile ? '-20%' : '10%',
       width: isMobile ? '300px' : '500px',
       height: isMobile ? '300px' : '500px',
-      backgroundColor: '#06b6d4',
+      backgroundColor: '#10b981',
       borderRadius: '50%',
       filter: isMobile ? 'blur(80px)' : 'blur(120px)',
       opacity: 0.15,
@@ -147,7 +181,7 @@ export default function VoidHacksDomains() {
       right: isMobile ? '-20%' : '10%',
       width: isMobile ? '300px' : '500px',
       height: isMobile ? '300px' : '500px',
-      backgroundColor: '#a855f7',
+      backgroundColor: '#8b5cf6',
       borderRadius: '50%',
       filter: isMobile ? 'blur(80px)' : 'blur(120px)',
       opacity: 0.15,
@@ -166,10 +200,10 @@ export default function VoidHacksDomains() {
     versionTag: {
       display: 'inline-block',
       padding: 'clamp(0.4rem, 2vw, 0.5rem) clamp(0.75rem, 3vw, 1rem)',
-      background: 'rgba(6, 182, 212, 0.1)',
-      border: '1px solid rgba(6, 182, 212, 0.3)',
+      background: 'rgba(16, 185, 129, 0.1)',
+      border: '1px solid rgba(16, 185, 129, 0.3)',
       borderRadius: '9999px',
-      color: '#22d3ee',
+      color: '#10b981',
       fontSize: 'clamp(0.75rem, 2vw, 0.875rem)',
       fontFamily: 'monospace',
       marginBottom: '1rem',
@@ -184,7 +218,7 @@ export default function VoidHacksDomains() {
       lineHeight: 1.1
     },
     titleGradient: {
-      background: 'linear-gradient(to right, #22d3ee, #a855f7, #ec4899)',
+      background: 'linear-gradient(to right, #10b981, #3b82f6, #8b5cf6)',
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
       backgroundClip: 'text'
@@ -251,10 +285,17 @@ export default function VoidHacksDomains() {
       display: 'flex',
       flexDirection: isMobile ? 'column' : 'row',
       alignItems: isMobile ? 'flex-start' : 'center',
+      justifyContent: 'space-between',
       gap: 'clamp(1rem, 3vw, 2rem)',
       marginBottom: 'clamp(1.5rem, 3vw, 2rem)',
       position: 'relative',
       zIndex: 1
+    },
+    headerLeft: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: 'clamp(1rem, 3vw, 2rem)',
+      flex: 1
     },
     iconWrapper: {
       width: 'clamp(60px, 15vw, 100px)',
@@ -273,49 +314,71 @@ export default function VoidHacksDomains() {
       filter: 'blur(20px)',
       opacity: 0.5
     },
+    downloadButton: {
+      padding: 'clamp(0.75rem, 2vw, 1rem) clamp(1.25rem, 3vw, 1.5rem)',
+      background: 'rgba(255, 255, 255, 0.05)',
+      backdropFilter: 'blur(20px)',
+      borderRadius: '12px',
+      border: '2px solid',
+      color: '#fff',
+      fontSize: 'clamp(0.875rem, 2vw, 1rem)',
+      fontWeight: '700',
+      cursor: 'pointer',
+      transition: 'all 0.3s ease',
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.5rem',
+      whiteSpace: 'nowrap'
+    },
     mainCardTitle: {
-      fontSize: 'clamp(1.5rem, 5vw, 3rem)',
+      fontSize: 'clamp(1.5rem, 5vw, 2.5rem)',
       fontWeight: '900',
       color: '#fff',
       marginBottom: '0.5rem',
       lineHeight: 1.2
     },
     mainCardSubtitle: {
-      fontSize: 'clamp(0.875rem, 2.5vw, 1.25rem)',
+      fontSize: 'clamp(0.875rem, 2.5vw, 1.125rem)',
       color: '#9ca3af',
       fontWeight: '300',
       lineHeight: 1.4
     },
-    mainCardDescription: {
+    sectionTitle: {
+      fontSize: 'clamp(1.125rem, 3vw, 1.5rem)',
+      fontWeight: '800',
+      color: '#fff',
+      marginTop: 'clamp(1.5rem, 3vw, 2rem)',
+      marginBottom: '1rem',
+      position: 'relative',
+      zIndex: 1
+    },
+    sectionText: {
       color: '#d1d5db',
-      fontSize: 'clamp(0.875rem, 2.5vw, 1.125rem)',
+      fontSize: 'clamp(0.875rem, 2.5vw, 1rem)',
       lineHeight: 1.8,
-      marginBottom: 'clamp(1.5rem, 3vw, 2rem)',
+      marginBottom: '1rem',
       position: 'relative',
       zIndex: 1
     },
     grid: {
       display: 'grid',
-      gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(min(100%, 280px), 1fr))',
+      gridTemplateColumns: isMobile ? '1fr' : 'repeat(auto-fit, minmax(min(100%, 350px), 1fr))',
       gap: 'clamp(1rem, 2.5vw, 1.5rem)',
       marginTop: 'clamp(1.5rem, 3vw, 2rem)'
     },
     card: {
-      padding: 'clamp(1.25rem, 3vw, 2rem)',
+      padding: 'clamp(1.25rem, 3vw, 1.5rem)',
       background: 'rgba(255, 255, 255, 0.03)',
       backdropFilter: 'blur(20px)',
-      borderRadius: 'clamp(1rem, 2.5vw, 1.5rem)',
+      borderRadius: 'clamp(1rem, 2.5vw, 1.25rem)',
       border: '1px solid rgba(255, 255, 255, 0.1)',
       transition: 'all 0.3s ease'
     },
     cardTitle: {
-      fontSize: 'clamp(1rem, 2.5vw, 1.25rem)',
+      fontSize: 'clamp(1rem, 2.5vw, 1.125rem)',
       fontWeight: '800',
       color: '#fff',
-      marginBottom: '1rem',
-      display: 'flex',
-      alignItems: 'center',
-      gap: '0.5rem'
+      marginBottom: '1rem'
     },
     list: {
       listStyle: 'none',
@@ -324,7 +387,7 @@ export default function VoidHacksDomains() {
     },
     listItem: {
       color: '#9ca3af',
-      fontSize: 'clamp(0.8rem, 2vw, 0.95rem)',
+      fontSize: 'clamp(0.8rem, 2vw, 0.9rem)',
       marginBottom: '0.75rem',
       paddingLeft: '1.5rem',
       position: 'relative',
@@ -369,13 +432,13 @@ export default function VoidHacksDomains() {
       <div style={styles.content}>
         <div style={styles.header}>
           <div style={styles.versionTag}>
-            CHOOSE YOUR TRACK
+            CHOOSE YOUR CHALLENGE
           </div>
           <h2 style={styles.title}>
             Hackathon <span style={styles.titleGradient}>Domains</span>
           </h2>
           <p style={styles.subtitle}>
-            PICK YOUR PASSION • BUILD YOUR FUTURE
+            SOLVE REAL PROBLEMS • BUILD THE FUTURE
           </p>
         </div>
 
@@ -383,7 +446,7 @@ export default function VoidHacksDomains() {
           {domains.map((domain, index) => {
             const TabIcon = domain.icon;
             const isActive = activeTab === index;
-            
+
             return (
               <button
                 key={domain.id}
@@ -432,30 +495,58 @@ export default function VoidHacksDomains() {
             ></div>
 
             <div style={styles.mainCardHeader}>
-              <div
-                style={{
-                  ...styles.iconWrapper,
-                  background: `${activeDomain.color}15`,
-                  border: `3px solid ${activeDomain.color}60`
-                }}
-              >
+              <div style={styles.headerLeft}>
                 <div
                   style={{
-                    ...styles.iconGlow,
-                    background: activeDomain.gradient
+                    ...styles.iconWrapper,
+                    background: `${activeDomain.color}15`,
+                    border: `3px solid ${activeDomain.color}60`
                   }}
-                ></div>
-                <Icon size={iconSize} color={activeDomain.color} style={{ position: 'relative', zIndex: 1 }} />
+                >
+                  <div
+                    style={{
+                      ...styles.iconGlow,
+                      background: activeDomain.gradient
+                    }}
+                  ></div>
+                  <Icon size={iconSize} color={activeDomain.color} style={{ position: 'relative', zIndex: 1 }} />
+                </div>
+                <div>
+                  <h3 style={styles.mainCardTitle}>{activeDomain.fullTitle}</h3>
+                  <p style={styles.mainCardSubtitle}>{activeDomain.description}</p>
+                </div>
               </div>
-              <div>
-                <h3 style={styles.mainCardTitle}>{activeDomain.fullTitle}</h3>
-                <p style={styles.mainCardSubtitle}>{activeDomain.description}</p>
-              </div>
+              <button
+                style={{
+                  ...styles.downloadButton,
+                  borderColor: `${activeDomain.color}40`
+                }}
+                onClick={() => handleDownloadPDF(activeDomain.id)}
+                onMouseEnter={(e) => {
+                  if (!isMobile) {
+                    e.currentTarget.style.background = activeDomain.gradient;
+                    e.currentTarget.style.transform = 'translateY(-2px)';
+                    e.currentTarget.style.boxShadow = `0 10px 30px ${activeDomain.color}40`;
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isMobile) {
+                    e.currentTarget.style.background = 'rgba(255, 255, 255, 0.05)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                    e.currentTarget.style.boxShadow = 'none';
+                  }
+                }}
+              >
+                <Download size={20} />
+                Download PDF
+              </button>
             </div>
 
-            <p style={styles.mainCardDescription}>
-              {activeDomain.detailedDescription}
-            </p>
+            <h4 style={styles.sectionTitle}>Background</h4>
+            <p style={styles.sectionText}>{activeDomain.background}</p>
+
+            <h4 style={styles.sectionTitle}>Challenge</h4>
+            <p style={styles.sectionText}>{activeDomain.challenge}</p>
 
             <div style={styles.grid}>
               <div
@@ -473,12 +564,9 @@ export default function VoidHacksDomains() {
                   }
                 }}
               >
-                <h4 style={styles.cardTitle}>
-                  <Sparkles size={20} color={activeDomain.color} />
-                  What to Build
-                </h4>
+                <h4 style={styles.cardTitle}>Key Features to Implement</h4>
                 <ul style={styles.list}>
-                  {activeDomain.examples.map((example, idx) => (
+                  {activeDomain.keyFeatures.map((feature, idx) => (
                     <li key={idx} style={styles.listItem}>
                       <div
                         style={{
@@ -486,7 +574,7 @@ export default function VoidHacksDomains() {
                           background: activeDomain.gradient
                         }}
                       ></div>
-                      {example}
+                      {feature}
                     </li>
                   ))}
                 </ul>
@@ -507,10 +595,38 @@ export default function VoidHacksDomains() {
                   }
                 }}
               >
-                <h4 style={styles.cardTitle}>
-                  <Code size={20} color={activeDomain.color} />
-                  Tech Stack
-                </h4>
+                <h4 style={styles.cardTitle}>Technical Requirements</h4>
+                <ul style={styles.list}>
+                  {activeDomain.requirements.map((req, idx) => (
+                    <li key={idx} style={styles.listItem}>
+                      <div
+                        style={{
+                          ...styles.bullet,
+                          background: activeDomain.gradient
+                        }}
+                      ></div>
+                      {req}
+                    </li>
+                  ))}
+                </ul>
+              </div>
+
+              <div
+                style={styles.card}
+                onMouseEnter={(e) => {
+                  if (!isMobile) {
+                    e.currentTarget.style.borderColor = `${activeDomain.color}40`;
+                    e.currentTarget.style.transform = 'translateY(-5px)';
+                  }
+                }}
+                onMouseLeave={(e) => {
+                  if (!isMobile) {
+                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
+                    e.currentTarget.style.transform = 'translateY(0)';
+                  }
+                }}
+              >
+                <h4 style={styles.cardTitle}>Suggested Tech Stack</h4>
                 <div style={styles.techStackGrid}>
                   {activeDomain.techStack.map((tech, idx) => (
                     <div
@@ -541,40 +657,23 @@ export default function VoidHacksDomains() {
                   ))}
                 </div>
               </div>
+            </div>
 
-              <div
-                style={styles.card}
-                onMouseEnter={(e) => {
-                  if (!isMobile) {
-                    e.currentTarget.style.borderColor = `${activeDomain.color}40`;
-                    e.currentTarget.style.transform = 'translateY(-5px)';
-                  }
-                }}
-                onMouseLeave={(e) => {
-                  if (!isMobile) {
-                    e.currentTarget.style.borderColor = 'rgba(255, 255, 255, 0.1)';
-                    e.currentTarget.style.transform = 'translateY(0)';
-                  }
-                }}
-              >
-                <h4 style={styles.cardTitle}>
-                  <TrendingUp size={20} color={activeDomain.color} />
-                  Problem Areas
-                </h4>
-                <ul style={styles.list}>
-                  {activeDomain.challenges.map((challenge, idx) => (
-                    <li key={idx} style={styles.listItem}>
-                      <div
-                        style={{
-                          ...styles.bullet,
-                          background: activeDomain.gradient
-                        }}
-                      ></div>
-                      {challenge}
-                    </li>
-                  ))}
-                </ul>
-              </div>
+            <div style={{ ...styles.card, marginTop: 'clamp(1rem, 2.5vw, 1.5rem)' }}>
+              <h4 style={styles.cardTitle}>Expected Deliverables</h4>
+              <ul style={styles.list}>
+                {activeDomain.deliverables.map((deliverable, idx) => (
+                  <li key={idx} style={styles.listItem}>
+                    <div
+                      style={{
+                        ...styles.bullet,
+                        background: activeDomain.gradient
+                      }}
+                    ></div>
+                    {deliverable}
+                  </li>
+                ))}
+              </ul>
             </div>
           </div>
         </div>
@@ -593,6 +692,11 @@ export default function VoidHacksDomains() {
 
         * {
           box-sizing: border-box;
+        }
+
+        button {
+          border: none;
+          outline: none;
         }
 
         @media (max-width: 480px) {
