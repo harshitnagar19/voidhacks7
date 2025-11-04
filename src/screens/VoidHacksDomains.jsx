@@ -132,8 +132,7 @@ export default function VoidHacksDomains() {
     const domain = domains.find(d => d.id === domainId);
     if (!domain) return;
   
-    const pdfPath = `public/assets/challenges/${domainId}-challenge.pdf`; // from public folder
-    console.log(pdfPath)
+    const pdfPath = `/public/assets/challenges/${domainId}-challenge.pdf`; // from public folder
     window.open(pdfPath, '_blank');
 
     // const link = document.createElement('a');
