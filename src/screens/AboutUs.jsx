@@ -635,7 +635,7 @@ export default function AboutUs() {
             }}
           >
             <div style={styles.statNumber}>1900+</div>
-            <div style={styles.statLabel}>Participants Last Year</div>
+            <div style={styles.statLabel}>Participated Till Now</div>
           </div>
 
           <div 
