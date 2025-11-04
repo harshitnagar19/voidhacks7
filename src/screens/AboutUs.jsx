@@ -198,6 +198,7 @@ export default function AboutUs() {
       animation: 'fadeInUp 1s ease-out'
     },
     badge: {
+        marginTop: '34px',
       display: 'inline-block',
       padding: '0.5rem 1.25rem',
       background: 'rgba(6, 182, 212, 0.1)',

@@ -1,6 +1,6 @@
 import React, { useState } from 'react'
 import { useNavigate } from 'react-router-dom'
-
+import logo from "../../public/assets/logo/image.png"
 const NavBar = () => {
     const navigate = useNavigate();
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
@@ -115,7 +115,16 @@ const NavBar = () => {
             cursor: 'pointer',
             transition: 'transform 0.3s',
             fontSize: '0.875rem'
+        },
+        logoImg: {
+            width: '30px',
+            height: '30px'
+        },
+        img:{
+            width:'100%',
+            height:'100%'
         }
+
     }
 
     return (
@@ -124,7 +133,9 @@ const NavBar = () => {
                 <div style={styles.navContent} className="nav-content">
                     <div style={styles.logo} onClick={() => navigate("/")}>
                         <div style={styles.logoIcon} className="logo-icon">
-                            <span style={{ color: '#22d3ee', fontWeight: 'bold', fontSize: '1.25rem' }} className="logo-icon-text">&lt;/&gt;</span>
+                           <div style={styles.logoImg} className='logo-img'>
+                            <img src={logo} alt="" style={styles.img} />
+                            </div>
                         </div>
                         <span style={styles.logoText} className="logo-text">void<span style={styles.logoAccent}>hacks() 7.0</span></span>
                     </div>
@@ -239,6 +250,10 @@ const NavBar = () => {
 
                 /* Tablet styles */
                 @media (max-width: 768px) {
+                 .logo-img{
+                        width: '20px';
+                        height: '20px'
+                    }
                     .nav-content {
                         padding: 0.75rem 1rem !important;
                     }
@@ -272,6 +287,10 @@ const NavBar = () => {
 
                 /* Mobile styles */
                 @media (max-width: 480px) {
+                    .logo-img{
+                        width: '20px';
+                        height: '20px'
+                    }
                     .nav-content {
                         padding: 0.625rem 0.875rem !important;
                     }

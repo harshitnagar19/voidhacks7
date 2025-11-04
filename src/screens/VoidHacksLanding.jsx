@@ -768,6 +768,7 @@ export default function VoidHacksLanding({ scheduleRef, aboutRef }) {
           }
           
           .version-tag {
+            margin-top:30px !important;
             font-size: 0.65rem !important;
             padding: 0.35rem 0.75rem !important;
             margin-bottom: 1.25rem !important;
