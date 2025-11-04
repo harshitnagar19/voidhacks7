@@ -1,9 +1,10 @@
-import React, { useEffect, useRef, useState } from 'react';
+import React, { useEffect, useRef } from 'react';
+import { useNavigate } from 'react-router-dom';
 import * as THREE from 'three';
-export default function VoidHacksLanding({ scheduleRef }) {
-  const canvasRef = useRef(null);
-  const [mousePosition, setMousePosition] = useState({ x: 0, y: 0 });
 
+export default function VoidHacksLanding({ scheduleRef, aboutRef }) {
+  const canvasRef = useRef(null);
+  const navigate = useNavigate();
   useEffect(() => {
     if (!canvasRef.current) return;
 
@@ -90,8 +91,6 @@ export default function VoidHacksLanding({ scheduleRef }) {
         shape.position.y += Math.sin(elapsedTime + shape.position.x) * 0.001;
       });
 
-      camera.position.x = mousePosition.x * 0.5;
-      camera.position.y = -mousePosition.y * 0.5;
       camera.lookAt(scene.position);
 
       renderer.render(scene, camera);
@@ -113,25 +112,18 @@ export default function VoidHacksLanding({ scheduleRef }) {
       cancelAnimationFrame(animationFrame);
       renderer.dispose();
     };
-  }, [mousePosition]);
-
-  useEffect(() => {
-    const handleMouseMove = (e) => {
-      setMousePosition({
-        x: (e.clientX / window.innerWidth) * 2 - 1,
-        y: (e.clientY / window.innerHeight) * 2 - 1
-      });
-    };
-
-    window.addEventListener('mousemove', handleMouseMove);
-
-    return () => {
-      window.removeEventListener('mousemove', handleMouseMove);
-    };
   }, []);
 
   const handleViewSchedule = () => {
     scheduleRef.current?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  const handleScrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: "smooth" });
+  };
+
+  const handleViewAbout = () => {
+    aboutRef.current?.scrollIntoView({ behavior: "smooth" });
   };
 
   const styles = {
@@ -182,7 +174,7 @@ export default function VoidHacksLanding({ scheduleRef }) {
       backgroundColor: '#a855f7',
       borderRadius: '50%',
       mixBlendMode: 'screen',
-      filter: 'blur(96px)',
+      filter: 'blur(156px)',
       opacity: 0.2,
       animation: 'pulse 2s infinite',
       animationDelay: '1s'
@@ -196,7 +188,7 @@ export default function VoidHacksLanding({ scheduleRef }) {
       backgroundColor: '#ec4899',
       borderRadius: '50%',
       mixBlendMode: 'screen',
-      filter: 'blur(96px)',
+      filter: 'blur(156px)',
       opacity: 0.2,
       animation: 'pulse 2s infinite',
       animationDelay: '2s'
@@ -216,7 +208,8 @@ export default function VoidHacksLanding({ scheduleRef }) {
       padding: '1rem 1.5rem',
       display: 'flex',
       justifyContent: 'space-between',
-      alignItems: 'center'
+      alignItems: 'center',
+      gap: '2rem'
     },
     logo: {
       display: 'flex',
@@ -239,6 +232,21 @@ export default function VoidHacksLanding({ scheduleRef }) {
     },
     logoAccent: {
       color: '#22d3ee'
+    },
+    navLinks: {
+      display: 'flex',
+      gap: '2rem',
+      alignItems: 'center'
+    },
+    navLink: {
+      color: '#fff',
+      fontSize: '0.9rem',
+      fontWeight: '500',
+      cursor: 'pointer',
+      transition: 'color 0.3s',
+      background: 'none',
+      border: 'none',
+      padding: '0'
     },
     registerBtn: {
       padding: '0.5rem 1.5rem',
@@ -455,6 +463,30 @@ export default function VoidHacksLanding({ scheduleRef }) {
             <span style={styles.logoText} className="logo-text">void<span style={styles.logoAccent}>hacks() 7.0</span></span>
           </div>
 
+          <div style={styles.navLinks} className="nav-links">
+            <button 
+              style={styles.navLink} 
+              className="nav-link"
+              onClick={()=>{navigate("/")}}
+            >
+              Home
+            </button>
+            <button 
+              style={styles.navLink} 
+              className="nav-link"
+              onClick={()=>{navigate("/timelines")}}
+            >
+              Timeline
+            </button>
+            <button 
+              style={styles.navLink} 
+              className="nav-link"
+              onClick={()=>{navigate("/about-us")}}
+            >
+              About Us
+            </button>
+          </div>
+
           <button 
           style={styles.registerBtn} 
           className="register-btn"
@@ -521,18 +553,18 @@ export default function VoidHacksLanding({ scheduleRef }) {
           className="cta-button primary-btn"
           onClick={() => window.open('https://unstop.com/o/2wGEnLi?lb=5VvzCSm&utm_medium=Share&utm_source=voidhack2161&utm_campaign=Online_coding_challenge', '_blank')}
           >Register Your Team</button>
-          <button style={styles.secondaryBtn} className="cta-button secondary-btn" onClick={handleViewSchedule}>View Schedule</button>
+          <button style={styles.secondaryBtn} className="cta-button secondary-btn" onClick={()=>{navigate("/timelines")}}>View Schedule</button>
         </div>
 
         <div style={styles.stats} className="stats">
           <div style={styles.statItem}>
-            <div style={styles.statNumber} className="stat-number">900+</div>
-            <div style={styles.statLabel} className="stat-label">Students</div>
+            <div style={styles.statNumber} className="stat-number">500+</div>
+            <div style={styles.statLabel} className="stat-label">Students Registered</div>
           </div>
           <div style={styles.divider} className="divider"></div>
           <div style={styles.statItem}>
-            <div style={{ ...styles.statNumber, background: 'linear-gradient(to right, #a855f7, #9333ea)' }} className="stat-number">100+</div>
-            <div style={styles.statLabel} className="stat-label">Hackers</div>
+            <div style={{ ...styles.statNumber, background: 'linear-gradient(to right, #a855f7, #9333ea)' }} className="stat-number">120+</div>
+            <div style={styles.statLabel} className="stat-label">Teams</div>
           </div>
           <div style={styles.divider} className="divider"></div>
           <div style={styles.statItem}>
@@ -587,6 +619,11 @@ export default function VoidHacksLanding({ scheduleRef }) {
           transform: scale(1.05);
         }
         
+        .nav-link:hover {
+          color: #22d3ee;
+          transform: none;
+        }
+        
         /* Tablet styles */
         @media (max-width: 768px) {
           .nav-content {
@@ -609,6 +646,14 @@ export default function VoidHacksLanding({ scheduleRef }) {
           .register-btn {
             font-size: 0.75rem !important;
             padding: 0.4rem 1rem !important;
+          }
+          
+          .nav-links {
+            gap: 1.5rem !important;
+          }
+          
+          .nav-link {
+            font-size: 0.8rem !important;
           }
           
           .hero-content {
@@ -708,6 +753,10 @@ export default function VoidHacksLanding({ scheduleRef }) {
           .register-btn {
             font-size: 0.7rem !important;
             padding: 0.375rem 0.875rem !important;
+          }
+          
+          .nav-links {
+            display: none !important;
           }
           
           .hero-content {

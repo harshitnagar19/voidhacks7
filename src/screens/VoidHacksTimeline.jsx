@@ -1,6 +1,8 @@
 import React, { useEffect, useRef, useState } from 'react';
+import { useNavigate } from 'react-router-dom';
 
 export default function VoidHacksTimeline({props, ref}) {
+  const navigate = useNavigate();
   const [activeIndex, setActiveIndex] = useState(0);
   const [isVisible, setIsVisible] = useState(false);
   const [show, setShow] = useState(true);
@@ -35,7 +37,7 @@ export default function VoidHacksTimeline({props, ref}) {
       title: 'Registration & Check-in',
       description: 'Team registration, ID verification, and welcome kit distribution',
       icon: '📝',
-      color: '#06b6d4',
+      color: '#22d3ee',
       category: 'Arrival'
     },
     {
@@ -75,7 +77,7 @@ export default function VoidHacksTimeline({props, ref}) {
       title: 'Mentor Session 1',
       description: 'Industry experts available for guidance and technical support',
       icon: '👨‍🏫',
-      color: '#8b5cf6',
+      color: '#22d3ee',
       category: 'Workshop'
     },
     {
@@ -85,7 +87,7 @@ export default function VoidHacksTimeline({props, ref}) {
       title: 'Mini Challenge 1',
       description: 'Quick coding challenge with exciting prizes',
       icon: '⚡',
-      color: '#06b6d4',
+      color: '#a855f7',
       category: 'Activity'
     },
     {
@@ -95,7 +97,7 @@ export default function VoidHacksTimeline({props, ref}) {
       title: 'Tech Talk: AI/ML',
       description: 'Special session on latest AI/ML trends and implementations',
       icon: '🤖',
-      color: '#22d3ee',
+      color: '#ec4899',
       category: 'Workshop'
     },
     {
@@ -105,7 +107,7 @@ export default function VoidHacksTimeline({props, ref}) {
       title: 'Dinner & Networking',
       description: 'Evening meal with team bonding activities',
       icon: '🍜',
-      color: '#a855f7',
+      color: '#22d3ee',
       category: 'Break'
     },
     {
@@ -115,7 +117,7 @@ export default function VoidHacksTimeline({props, ref}) {
       title: 'Midnight Snacks',
       description: 'Coffee, energy drinks, and late-night fuel',
       icon: '☕',
-      color: '#ec4899',
+      color: '#a855f7',
       category: 'Break'
     },
   ];
@@ -128,7 +130,7 @@ export default function VoidHacksTimeline({props, ref}) {
       title: 'Gaming Break',
       description: 'Take a break with fun gaming sessions to recharge',
       icon: '🎮',
-      color: '#8b5cf6',
+      color: '#ec4899',
       category: 'Activity'
     },
     {
@@ -138,7 +140,7 @@ export default function VoidHacksTimeline({props, ref}) {
       title: 'Mentor Session 2',
       description: 'Late-night guidance for final sprint',
       icon: '💡',
-      color: '#06b6d4',
+      color: '#a855f7',
       category: 'Workshop'
     },
     {
@@ -158,7 +160,7 @@ export default function VoidHacksTimeline({props, ref}) {
       title: 'Final Sprint',
       description: 'Last 2 hours to polish your projects',
       icon: '⏰',
-      color: '#a855f7',
+      color: '#ec4899',
       category: 'Activity'
     },
     {
@@ -168,7 +170,7 @@ export default function VoidHacksTimeline({props, ref}) {
       title: 'Hacking Ends',
       description: 'Code freeze! Submit your final projects',
       icon: '🏁',
-      color: '#ec4899',
+      color: '#a855f7',
       category: 'End'
     },
     {
@@ -178,7 +180,7 @@ export default function VoidHacksTimeline({props, ref}) {
       title: 'Lunch Break',
       description: 'Relax and refuel before presentations',
       icon: '🍽️',
-      color: '#8b5cf6',
+      color: '#22d3ee',
       category: 'Break'
     },
     {
@@ -188,7 +190,7 @@ export default function VoidHacksTimeline({props, ref}) {
       title: 'Project Presentations',
       description: 'Teams present their innovations to judges',
       icon: '📊',
-      color: '#06b6d4',
+      color: '#ec4899',
       category: 'Judging'
     },
     {
@@ -198,7 +200,7 @@ export default function VoidHacksTimeline({props, ref}) {
       title: 'Closing Ceremony',
       description: 'Winner announcements, prizes, and celebration',
       icon: '🏆',
-      color: '#22d3ee',
+      color: '#a855f7',
       category: 'Ceremony'
     },
     {
@@ -208,12 +210,128 @@ export default function VoidHacksTimeline({props, ref}) {
       title: 'Photo Session & Farewell',
       description: 'Group photos and goodbye to new friends',
       icon: '📸',
-      color: '#a855f7',
+      color: '#22d3ee',
       category: 'End'
     }
   ];
 
   const styles = {
+    nav: {
+      position: 'fixed',
+      top: 0,
+      width: '100%',
+      zIndex: 50,
+      backdropFilter: 'blur(12px)',
+      backgroundColor: 'rgba(0, 0, 0, 0.3)',
+      borderBottom: '1px solid rgba(6, 182, 212, 0.2)'
+    },
+    navContent: {
+      maxWidth: '1280px',
+      margin: '0 auto',
+      padding: '1rem 1.5rem',
+      display: 'flex',
+      justifyContent: 'space-between',
+      alignItems: 'center',
+      gap: '2rem'
+    },
+    logo: {
+      display: 'flex',
+      alignItems: 'center',
+      gap: '0.5rem'
+    },
+    logoIcon: {
+      width: '40px',
+      height: '40px',
+      border: '2px solid #22d3ee',
+      borderRadius: '8px',
+      display: 'flex',
+      alignItems: 'center',
+      justifyContent: 'center'
+    },
+    logoText: {
+      color: '#fff',
+      fontWeight: 'bold',
+      fontSize: '1.25rem'
+    },
+    logoAccent: {
+      color: '#22d3ee'
+    },
+    navLinks: {
+      display: 'flex',
+      gap: '2rem',
+      alignItems: 'center'
+    },
+    navLink: {
+      color: '#fff',
+      fontSize: '0.9rem',
+      fontWeight: '500',
+      cursor: 'pointer',
+      transition: 'color 0.3s',
+      background: 'none',
+      border: 'none',
+      padding: '0'
+    },
+    registerBtn: {
+      padding: '0.5rem 1.5rem',
+      background: 'linear-gradient(to right, #06b6d4, #a855f7)',
+      borderRadius: '9999px',
+      color: '#fff',
+      fontWeight: '600',
+      border: 'none',
+      cursor: 'pointer',
+      transition: 'transform 0.3s',
+      fontSize: '0.875rem'
+    },
+    gradientOverlay: {
+      position: 'fixed',
+      top: 0,
+      left: 0,
+      width: '100%',
+      height: '100%',
+      zIndex: 1,
+      pointerEvents: 'none'
+    },
+    gradient1: {
+      position: 'absolute',
+      top: 0,
+      left: '25%',
+      width: '384px',
+      height: '384px',
+      backgroundColor: '#06b6d4',
+      borderRadius: '50%',
+      mixBlendMode: 'screen',
+      filter: 'blur(96px)',
+      opacity: 0.2,
+      animation: 'pulse 2s infinite'
+    },
+    gradient2: {
+      position: 'absolute',
+      bottom: 0,
+      right: '25%',
+      width: '384px',
+      height: '384px',
+      backgroundColor: '#a855f7',
+      borderRadius: '50%',
+      mixBlendMode: 'screen',
+      filter: 'blur(96px)',
+      opacity: 0.2,
+      animation: 'pulse 2s infinite',
+      animationDelay: '1s'
+    },
+    gradient3: {
+      position: 'absolute',
+      top: '50%',
+      left: '50%',
+      width: '384px',
+      height: '384px',
+      backgroundColor: '#ec4899',
+      borderRadius: '50%',
+      mixBlendMode: 'screen',
+      filter: 'blur(96px)',
+      opacity: 0.2,
+      animation: 'pulse 2s infinite',
+      animationDelay: '2s'
+    },
     container: {
       position: 'relative',
       minHeight: '100vh',
@@ -223,51 +341,6 @@ export default function VoidHacksTimeline({props, ref}) {
       overflowX: 'hidden',
       overflowY: 'auto',
       boxSizing: 'border-box'
-    },
-    backgroundEffects: {
-      position: 'fixed',
-      top: 0,
-      left: 0,
-      width: '100%',
-      height: '100%',
-      zIndex: 0,
-      pointerEvents: 'none'
-    },
-    gradient1: {
-      position: 'absolute',
-      top: '10%',
-      left: '10%',
-      width: '500px',
-      height: '500px',
-      backgroundColor: '#06b6d4',
-      borderRadius: '50%',
-      filter: 'blur(120px)',
-      opacity: 0.15,
-      animation: 'float 8s ease-in-out infinite'
-    },
-    gradient2: {
-      position: 'absolute',
-      bottom: '20%',
-      right: '10%',
-      width: '400px',
-      height: '400px',
-      backgroundColor: '#a855f7',
-      borderRadius: '50%',
-      filter: 'blur(120px)',
-      opacity: 0.15,
-      animation: 'float 10s ease-in-out infinite reverse'
-    },
-    gradient3: {
-      position: 'absolute',
-      top: '50%',
-      left: '50%',
-      width: '300px',
-      height: '300px',
-      backgroundColor: '#ec4899',
-      borderRadius: '50%',
-      filter: 'blur(120px)',
-      opacity: 0.1,
-      animation: 'float 12s ease-in-out infinite'
     },
     content: {
       position: 'relative',
@@ -282,10 +355,10 @@ export default function VoidHacksTimeline({props, ref}) {
     versionTag: {
       display: 'inline-block',
       padding: '0.5rem 1rem',
-      background: 'rgba(6, 182, 212, 0.1)',
-      border: '1px solid rgba(6, 182, 212, 0.3)',
+      background: 'rgba(11, 134, 154, 0.1)',
+      border: '1px solid rgba(11, 134, 154, 0.3)',
       borderRadius: '9999px',
-      color: '#22d3ee',
+      color: '#0b869a',
       fontSize: '0.875rem',
       fontFamily: 'monospace',
       marginBottom: '1rem',
@@ -300,7 +373,7 @@ export default function VoidHacksTimeline({props, ref}) {
       lineHeight: 1
     },
     titleGradient: {
-      background: 'linear-gradient(to right, #22d3ee, #a855f7, #ec4899)',
+      background: 'linear-gradient(to right, #0b869a, #d85cb9)',
       WebkitBackgroundClip: 'text',
       WebkitTextFillColor: 'transparent',
       backgroundClip: 'text'
@@ -312,7 +385,7 @@ export default function VoidHacksTimeline({props, ref}) {
       letterSpacing: '0.1em'
     },
     dateRange: {
-      color: '#22d3ee',
+      color: '#0b869a',
       fontSize: '1rem',
       fontWeight: '600',
       marginTop: '0.5rem',
@@ -332,7 +405,7 @@ export default function VoidHacksTimeline({props, ref}) {
       top: 0,
       bottom: 0,
       width: '2px',
-      background: 'linear-gradient(to bottom, transparent, #06b6d4, #a855f7, #ec4899, transparent)',
+      background: 'linear-gradient(to bottom, transparent, #0b869a, #d85cb9, #0b869a, transparent)',
       opacity: 0.5
     },
     glowingLine: {
@@ -341,8 +414,8 @@ export default function VoidHacksTimeline({props, ref}) {
       top: 0,
       width: '2px',
       height: '200px',
-      background: 'linear-gradient(to bottom, transparent, #22d3ee, #22d3ee, transparent)',
-      boxShadow: '0 0 20px #22d3ee, 0 0 40px #22d3ee',
+      background: 'linear-gradient(to bottom, transparent, #0b869a, #0b869a, transparent)',
+      boxShadow: '0 0 20px #0b869a, 0 0 40px #0b869a',
       animation: 'lineGlow 15s linear infinite',
       zIndex: 1
     },
@@ -352,8 +425,8 @@ export default function VoidHacksTimeline({props, ref}) {
       top: 0,
       width: '2px',
       height: '200px',
-      background: 'linear-gradient(to bottom, transparent, #a855f7, #a855f7, transparent)',
-      boxShadow: '0 0 20px #a855f7, 0 0 40px #a855f7',
+      background: 'linear-gradient(to bottom, transparent, #d85cb9, #d85cb9, transparent)',
+      boxShadow: '0 0 20px #d85cb9, 0 0 40px #d85cb9',
       animation: 'lineGlow 15s linear infinite',
       animationDelay: '3s',
       zIndex: 1
@@ -364,8 +437,8 @@ export default function VoidHacksTimeline({props, ref}) {
       top: 0,
       width: '2px',
       height: '200px',
-      background: 'linear-gradient(to bottom, transparent, #ec4899, #ec4899, transparent)',
-      boxShadow: '0 0 20px #ec4899, 0 0 40px #ec4899',
+      background: 'linear-gradient(to bottom, transparent, #0b869a, #0b869a, transparent)',
+      boxShadow: '0 0 20px #0b869a, 0 0 40px #0b869a',
       animation: 'lineGlow 15s linear infinite',
       animationDelay: '6s',
       zIndex: 1
@@ -376,8 +449,8 @@ export default function VoidHacksTimeline({props, ref}) {
       top: 0,
       width: '2px',
       height: '200px',
-      background: 'linear-gradient(to bottom, transparent, #06b6d4, #06b6d4, transparent)',
-      boxShadow: '0 0 20px #06b6d4, 0 0 40px #06b6d4',
+      background: 'linear-gradient(to bottom, transparent, #d85cb9, #d85cb9, transparent)',
+      boxShadow: '0 0 20px #d85cb9, 0 0 40px #d85cb9',
       animation: 'lineGlow 15s linear infinite',
       animationDelay: '9s',
       zIndex: 1
@@ -388,8 +461,8 @@ export default function VoidHacksTimeline({props, ref}) {
       top: 0,
       width: '2px',
       height: '200px',
-      background: 'linear-gradient(to bottom, transparent, #8b5cf6, #8b5cf6, transparent)',
-      boxShadow: '0 0 20px #8b5cf6, 0 0 40px #8b5cf6',
+      background: 'linear-gradient(to bottom, transparent, #0b869a, #0b869a, transparent)',
+      boxShadow: '0 0 20px #0b869a, 0 0 40px #0b869a',
       animation: 'lineGlow 15s linear infinite',
       animationDelay: '12s',
       zIndex: 1
@@ -457,7 +530,7 @@ export default function VoidHacksTimeline({props, ref}) {
     timelineCardHover: {
       background: 'rgba(255, 255, 255, 0.05)',
       transform: 'translateX(10px)',
-      borderColor: 'rgba(6, 182, 212, 0.3)'
+      borderColor: 'rgba(11, 134, 154, 0.3)'
     },
     cardHeader: {
       display: 'flex',
@@ -467,7 +540,7 @@ export default function VoidHacksTimeline({props, ref}) {
     },
     cardIcon: {
       fontSize: '2rem',
-      filter: 'drop-shadow(0 0 10px rgba(6, 182, 212, 0.5))'
+      filter: 'drop-shadow(0 0 10px rgba(11, 134, 154, 0.5))'
     },
     cardTime: {
       display: 'flex',
@@ -512,7 +585,7 @@ export default function VoidHacksTimeline({props, ref}) {
     },
     toggleButton: {
       padding: '0.875rem 2rem',
-      background: 'linear-gradient(to right, #06b6d4, #a855f7)',
+      background: 'linear-gradient(to right, #0b869a, #d85cb9)',
       borderRadius: '9999px',
       color: '#fff',
       fontWeight: 'bold',
@@ -522,7 +595,7 @@ export default function VoidHacksTimeline({props, ref}) {
       transition: 'all 0.3s',
       marginTop: '2rem',
       marginLeft: '5rem',
-      boxShadow: '0 0 20px rgba(6, 182, 212, 0.3)'
+      boxShadow: '0 0 20px rgba(11, 134, 154, 0.3)'
     },
     legend: {
       display: 'flex',
@@ -560,11 +633,54 @@ export default function VoidHacksTimeline({props, ref}) {
   return (
     <div style={styles.container} ref={timelineRef} >
       <div ref={ref} id="schedule">
-      <div style={styles.backgroundEffects}>
+  
+
+      <div style={styles.gradientOverlay}>
         <div style={styles.gradient1}></div>
         <div style={styles.gradient2}></div>
         <div style={styles.gradient3}></div>
       </div>
+
+      <nav style={styles.nav}>
+        <div style={styles.navContent} className="nav-content">
+          <div style={styles.logo}>
+            <div style={styles.logoIcon} className="logo-icon">
+              <span style={{ color: '#22d3ee', fontWeight: 'bold', fontSize: '1.25rem' }} className="logo-icon-text">&lt;/&gt;</span>
+            </div>
+            <span style={styles.logoText} className="logo-text">void<span style={styles.logoAccent}>hacks() 7.0</span></span>
+          </div>
+
+          <div style={styles.navLinks} className="nav-links">
+            <button 
+              style={styles.navLink} 
+              className="nav-link"
+              onClick={()=>{navigate("/")}}
+            >
+              Home
+            </button>
+            <button 
+              style={styles.navLink} 
+              className="nav-link"
+              onClick={()=>{navigate("/timelines")}}
+            >
+              Timeline
+            </button>
+            <button 
+              style={styles.navLink} 
+              className="nav-link"
+              onClick={()=>{navigate("/about-us")}}
+            >
+              About Us
+            </button>
+          </div>
+
+          <button 
+          style={styles.registerBtn} 
+          className="register-btn"
+          onClick={() => window.open('https://unstop.com/o/2wGEnLi?lb=5VvzCSm&utm_medium=Share&utm_source=voidhack2161&utm_campaign=Online_coding_challenge', '_blank')}
+          >Register Now</button>
+        </div>
+      </nav>
 
       <div style={styles.content}>
         <div style={styles.header} className="timeline-header">
@@ -753,7 +869,7 @@ export default function VoidHacksTimeline({props, ref}) {
         <div style={styles.legend} className="legend">
           {categories.map((category, index) => {
             const color = timelineEvents.find(e => e.category === category)?.color || 
-                         timelineEvents2.find(e => e.category === category)?.color || '#06b6d4';
+                         timelineEvents2.find(e => e.category === category)?.color || '#0b869a';
             return (
               <div key={index} style={styles.legendItem} className="legend-item">
                 <div style={{ ...styles.legendDot, backgroundColor: color }}></div>
@@ -780,7 +896,7 @@ export default function VoidHacksTimeline({props, ref}) {
 
         .toggle-button:hover {
           transform: scale(1.05);
-          box-shadow: 0 0 30px rgba(6, 182, 212, 0.5);
+          box-shadow: 0 0 30px rgba(11, 134, 154, 0.5);
         }
 
         /* Tablet styles */

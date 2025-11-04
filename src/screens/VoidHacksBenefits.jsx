@@ -70,30 +70,30 @@ export default function VoidHacksBenefits() {
       gradient: 'linear-gradient(135deg, #7c3aed, #8b5cf6)',
       stats: 'Live Sessions'
     },
-    {
-      icon: Briefcase,
-      title: 'Job & Internship Opportunities',
-      description: 'Direct recruitment opportunities with participating companies and startups',
-      color: '#06b6d4',
-      gradient: 'linear-gradient(135deg, #0891b2, #06b6d4)',
-      stats: '15+ Companies'
-    },
-    {
-      icon: Zap,
-      title: 'Exclusive API Access',
-      description: 'Free credits and access to premium APIs and development tools from sponsors',
-      color: '#ec4899',
-      gradient: 'linear-gradient(135deg, #ec4899, #f472b6)',
-      stats: 'Premium Tools'
-    },
-    {
-      icon: Target,
-      title: 'Portfolio Projects',
-      description: 'Build impressive projects to showcase your skills to future employers',
-      color: '#22d3ee',
-      gradient: 'linear-gradient(135deg, #22d3ee, #67e8f9)',
-      stats: 'Career Boost'
-    }
+    // {
+    //   icon: Briefcase,
+    //   title: 'Job & Internship Opportunities',
+    //   description: 'Direct recruitment opportunities with participating companies and startups',
+    //   color: '#06b6d4',
+    //   gradient: 'linear-gradient(135deg, #0891b2, #06b6d4)',
+    //   stats: '15+ Companies'
+    // },
+    // {
+    //   icon: Zap,
+    //   title: 'Exclusive API Access',
+    //   description: 'Free credits and access to premium APIs and development tools from sponsors',
+    //   color: '#ec4899',
+    //   gradient: 'linear-gradient(135deg, #ec4899, #f472b6)',
+    //   stats: 'Premium Tools'
+    // },
+    // {
+    //   icon: Target,
+    //   title: 'Portfolio Projects',
+    //   description: 'Build impressive projects to showcase your skills to future employers',
+    //   color: '#22d3ee',
+    //   gradient: 'linear-gradient(135deg, #22d3ee, #67e8f9)',
+    //   stats: 'Career Boost'
+    // }
   ];
 
   const styles = {
