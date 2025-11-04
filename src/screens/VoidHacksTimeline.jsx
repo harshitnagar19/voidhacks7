@@ -1,5 +1,6 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
+import NavBar from './NavBar';
 
 export default function VoidHacksTimeline({props, ref}) {
   const navigate = useNavigate();
@@ -631,6 +632,8 @@ export default function VoidHacksTimeline({props, ref}) {
   const categories = [...new Set([...categories1, ...categories2])];
 
   return (
+    <div>
+      <NavBar/>
     <div style={styles.container} ref={timelineRef} >
       <div ref={ref} id="schedule">
   
@@ -641,7 +644,7 @@ export default function VoidHacksTimeline({props, ref}) {
         <div style={styles.gradient3}></div>
       </div>
 
-      <nav style={styles.nav}>
+      {/* <nav style={styles.nav}>
         <div style={styles.navContent} className="nav-content">
           <div style={styles.logo}>
             <div style={styles.logoIcon} className="logo-icon">
@@ -680,7 +683,8 @@ export default function VoidHacksTimeline({props, ref}) {
           onClick={() => window.open('https://unstop.com/o/2wGEnLi?lb=5VvzCSm&utm_medium=Share&utm_source=voidhack2161&utm_campaign=Online_coding_challenge', '_blank')}
           >Register Now</button>
         </div>
-      </nav>
+      </nav> */}
+      
 
       <div style={styles.content}>
         <div style={styles.header} className="timeline-header">
@@ -880,6 +884,7 @@ export default function VoidHacksTimeline({props, ref}) {
         </div>
       </div>
 
+
       <style>{`
         @keyframes float {
           0%, 100% { transform: translate(0, 0); }
@@ -1014,6 +1019,7 @@ export default function VoidHacksTimeline({props, ref}) {
         }
       `}</style>
       </div>
+    </div>
     </div>
   );
 }

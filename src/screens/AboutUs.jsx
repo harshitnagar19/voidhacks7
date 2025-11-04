@@ -1,6 +1,7 @@
 import React, { useEffect, useRef, useState } from 'react';
 import { useNavigate } from 'react-router-dom';
 import * as THREE from 'three';
+import NavBar from './NavBar';
 
 export default function AboutUs() {
     const navigate = useNavigate()
@@ -467,7 +468,7 @@ export default function AboutUs() {
         <div style={styles.gradient3}></div>
       </div>
 
-      <nav style={styles.nav}>
+      {/* <nav style={styles.nav}>
         <div style={styles.navContent} className="nav-content">
           <div style={styles.logo}>
             <div style={styles.logoIcon} className="logo-icon">
@@ -506,7 +507,8 @@ export default function AboutUs() {
           onClick={() => window.open('https://unstop.com/o/2wGEnLi?lb=5VvzCSm&utm_medium=Share&utm_source=voidhack2161&utm_campaign=Online_coding_challenge', '_blank')}
           >Register Now</button>
         </div>
-      </nav>
+      </nav> */}
+      <NavBar/>
 
       <div style={styles.content} className="about-content">
         <div style={styles.header}>
