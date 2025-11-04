@@ -311,7 +311,7 @@ export default function LocationSection() {
             <iframe
               className="map-frame"
               style={styles.mapFrame}
-              src="!4f13.1!3m3!1m2!1s0x3962fd43e6b4f33f%3A0xa2c3c2b5b8e0b4f5!2sShri%20Vaishnav%20Vidyapeeth%20Vishwavidyalaya!5e0!3m2!1sen!2sin!4v1699999999999!5m2!1sen!2sin"
+              src="https://www.google.com/maps/embed?pb=!1m23!1m12!1m3!1d117676.81233287508!2d75.76722538888669!3d22.82467181440498!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!4m8!3e6!4m0!4m5!1s0x3963039c587a8091%3A0x206d00d7a5e4afb3!2sRRFX%2BVVC%2C%20Ujjain%20-%20Indore%20Rd%2C%20Gram%20Baroli%2C%20Indore%2C%20Madhya%20Pradesh%20453111!3m2!1d22.824693!2d75.849627!5e0!3m2!1sen!2sin!4v1762243437893!5m2!1sen!2sin"
               allowFullScreen=""
               loading="lazy"
               referrerPolicy="no-referrer-when-downgrade"
